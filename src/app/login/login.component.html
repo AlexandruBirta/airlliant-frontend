@@ -1,0 +1,56 @@
+<div id="login-background"></div>
+<mat-card class="login-center-container">
+
+    <h1>Login</h1>
+    <br>
+    <br>
+    <br>
+    <form
+            (ngSubmit)="login()"
+            [formGroup]="loginForm"
+    >
+        <div>
+            <mat-form-field appearance="outline" class="login-field">
+                <mat-label>Email</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="email"
+                        matInput
+                        placeholder="Email"
+                        type="email"
+                >
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" class="login-field">
+                <mat-label>Password</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="password"
+                        matInput
+                        placeholder="Password"
+                        type="password"
+                >
+            </mat-form-field>
+        </div>
+        <br>
+        <div>
+            <button
+                    [disabled]="loginForm.invalid"
+                    class="mat-primary-login"
+                    color="primary"
+                    mat-fab extended
+            >Login
+            </button>
+            <button
+                    [disabled]="loginForm.invalid"
+                    class="mat-primary-login"
+                    color="primary"
+                    mat-fab extended
+                    routerLink="../register"
+                    type="button"
+            >Register
+            </button>
+        </div>
+    </form>
+</mat-card>
+

@@ -1,0 +1,67 @@
+<mat-card class="register-center-container">
+    <form
+            (ngSubmit)="register()"
+            [formGroup]="registerForm"
+            class="example-form"
+    >
+
+        <div>
+            <mat-form-field class="register-field">
+                <mat-label>First Name</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="firstName"
+                        matInput
+                        placeholder="First Name"
+                        type="text"
+                >
+            </mat-form-field>
+            <mat-form-field class="register-field">
+                <mat-label>Last Name</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="lastName"
+                        matInput
+                        placeholder="Last Name"
+                        type="text"
+                >
+            </mat-form-field>
+            <mat-form-field class="register-field">
+                <mat-label>Email</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="email"
+                        matInput
+                        placeholder="Email"
+                        type="email"
+                >
+            </mat-form-field>
+            <br>
+            <mat-form-field class="register-field">
+                <mat-label>Password</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="password"
+                        matInput
+                        placeholder="Password"
+                        type="password"
+                >
+            </mat-form-field>
+        </div>
+
+        <div>
+            <button
+                    (click)="register()"
+                    [disabled]="registerForm.invalid"
+                    class="register-button"
+                    color="primary"
+                    mat-raised-button
+                    routerLink="../login"
+            >Register
+            </button>
+        </div>
+
+
+    </form>
+</mat-card>
+

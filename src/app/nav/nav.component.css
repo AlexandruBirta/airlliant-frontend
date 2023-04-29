@@ -1,0 +1,26 @@
+.nav-right-button {
+    display: flex;
+    width: 490px;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.trips-button {
+    color: orange;
+    width: 120px;
+    margin-left: 50px;
+}
+
+button {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+nav {
+    z-index: 2;
+}
+
+/*# sourceMappingURL=nav.component.css.map */

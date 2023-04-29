@@ -1,0 +1,40 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "scss/components/am-components/am-buttons";
+@import "scss/variables";
+@import "scss/theme";
+
+@mixin backgroundImagePosition {
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+* {
+  font-family: 'DM Serif Display', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+nav {
+  overflow: auto;
+}
+
+#home-background {
+  @include backgroundImagePosition;
+  background-image: url(/./assets/background-image-custom.jpg);
+}
+
+#login-background {
+  @include backgroundImagePosition;
+  background-image: url(/./assets/login-background-image.jpg);
+}

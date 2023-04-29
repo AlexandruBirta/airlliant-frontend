@@ -1,0 +1,25 @@
+.login-center-container {
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-bg-opacity: 1;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 30px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    z-index: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+.login-button {
+    width: 70px;
+    margin-right: 10%;
+    margin-left: 10px;
+}
+
+/*# sourceMappingURL=login.component.css.map */
