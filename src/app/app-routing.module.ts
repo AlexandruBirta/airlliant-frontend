@@ -4,11 +4,16 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
+import {TicketsComponent} from "./tickets/tickets.component";
 
 const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'tickets',
+        component: TicketsComponent
     },
     {
         path: 'about',

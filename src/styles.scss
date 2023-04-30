@@ -44,3 +44,8 @@ nav {
   background-image: url(/./assets/about-background-image.jpeg);
 }
 
+#tickets-background {
+  @include backgroundImagePosition;
+  background-image: url(/./assets/tickets-background-image.jpg);
+}
+

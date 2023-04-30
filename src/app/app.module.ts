@@ -21,6 +21,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { AboutComponent } from './about/about.component';
         LoginComponent,
         RegisterComponent,
         HomeComponent,
-        AboutComponent
+        AboutComponent,
+        TicketsComponent
     ],
     imports: [
         BrowserModule,
