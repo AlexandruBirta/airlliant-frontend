@@ -1,1 +1,37 @@
-$primaryColor: #BF2051
+
+$custom-red-palette: (
+        50 : #f7e4ea,
+        100 : #ecbccb,
+        200 : #df90a8,
+        300 : #d26385,
+        400 : #c9416b,
+        500 : #bf2051,
+        600 : #b91c4a,
+        700 : #b11840,
+        800 : #a91337,
+        900 : #9b0b27,
+        A100 : #ffc9d2,
+        A200 : #ff96a6,
+        A400 : #ff637b,
+        A700 : #ff4a65,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #000000,
+                400 : #ffffff,
+                500 : #ffffff,
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000,
+        )
+);
+
+
+$primaryColor: #BF2051;
+$primaryColorDarker: #7a1433;

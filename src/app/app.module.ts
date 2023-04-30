@@ -19,13 +19,15 @@ import {RegisterComponent} from './register/register.component';
 import {APP_CONFIG, APP_CONFIG_SERVICE} from "./app-config/app-config.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,

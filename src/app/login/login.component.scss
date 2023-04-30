@@ -34,3 +34,20 @@ h1 {
 .login-field {
   width: 100%;
 }
+
+.link-text {
+  margin-left: 25%;
+  font-size: 17px;
+  text-decoration: underline;
+  font-family: 'DM Serif Display', sans-serif;
+  color: $primaryColor;
+}
+
+.link-text:hover {
+  margin-left: 25%;
+  font-size: 17px;
+  text-decoration: underline;
+  font-family: 'DM Serif Display', sans-serif;
+  color: $primaryColorDarker;
+  cursor: pointer;
+}
