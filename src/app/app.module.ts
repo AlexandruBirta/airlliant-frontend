@@ -20,6 +20,7 @@ import {APP_CONFIG, APP_CONFIG_SERVICE} from "./app-config/app-config.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { HomeComponent } from './home/home.component';
         NavComponent,
         LoginComponent,
         RegisterComponent,
-        HomeComponent
+        HomeComponent,
+        AboutComponent
     ],
     imports: [
         BrowserModule,

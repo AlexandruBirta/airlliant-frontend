@@ -31,10 +31,16 @@ nav {
 
 #home-background {
   @include backgroundImagePosition;
-  background-image: url(/./assets/background-image-custom.jpg);
+  background-image: url(/./assets/home-background-image.jpg);
 }
 
 #login-background {
   @include backgroundImagePosition;
   background-image: url(/./assets/login-background-image.jpg);
 }
+
+#about-background {
+  @include backgroundImagePosition;
+  background-image: url(/./assets/about-background-image.jpeg);
+}
+
