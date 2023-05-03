@@ -21,25 +21,21 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
-            email: [''],
+            username: [''],
             password: ['']
         })
     }
 
     async login() {
-        console.log(this.loginForm.getRawValue());
-
-        this.user = await this.loginService.getUser(this.loginForm.get('email')?.getRawValue());
 
         await this.loginService.login(
-            this.user,
-            this.loginForm.get('email')?.getRawValue(),
+            this.loginForm.get('username')?.getRawValue(),
             this.loginForm.get('password')?.getRawValue()
         )
 
         this.loginForm.reset();
 
-        await this.router.navigate(['../trip']);
+        await this.router.navigate(['../home']);
 
     }
 

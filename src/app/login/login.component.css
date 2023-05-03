@@ -1,47 +1,47 @@
 .login-center-container {
-  position: absolute;
-  box-sizing: border-box;
-  padding: 30px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  z-index: 1;
-  background-color: white;
-  border: 10px dimgrey;
-  width: 485px;
-  height: 450px;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 30px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    z-index: 1;
+    background-color: white;
+    border: 10px dimgrey;
+    width: 485px;
+    height: 450px;
 }
 
 h1 {
-  font-size: 36px;
-  font-family: "DM Serif Display", sans-serif;
-  color: #BF2051;
+    font-size: 36px;
+    font-family: "DM Serif Display", sans-serif;
+    color: #BF2051;
 }
 
 .login-field {
-  width: 100%;
+    width: 100%;
 }
 
 .link-text {
-  margin-left: 25%;
-  font-size: 17px;
-  text-decoration: underline;
-  font-family: "DM Serif Display", sans-serif;
-  color: #BF2051;
+    margin-left: 25%;
+    font-size: 17px;
+    text-decoration: underline;
+    font-family: "DM Serif Display", sans-serif;
+    color: #BF2051;
 }
 
 .link-text:hover {
-  margin-left: 25%;
-  font-size: 17px;
-  text-decoration: underline;
-  font-family: "DM Serif Display", sans-serif;
-  color: #7a1433;
-  cursor: pointer;
+    margin-left: 25%;
+    font-size: 17px;
+    text-decoration: underline;
+    font-family: "DM Serif Display", sans-serif;
+    color: #7a1433;
+    cursor: pointer;
 }
 
 /*# sourceMappingURL=login.component.css.map */

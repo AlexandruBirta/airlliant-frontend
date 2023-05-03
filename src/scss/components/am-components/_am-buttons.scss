@@ -1,33 +1,33 @@
 @import "../../variables";
 
 @mixin buttonMixin {
-    font-size: 25px !important;
-    margin: 17px !important;
-    box-shadow: none !important;
-    border: 1px solid black !important;
-    background-color: white !important;
-    color: black !important;
+  font-size: 25px !important;
+  margin: 17px !important;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
 }
 
 button {
-    @include buttonMixin;
+  @include buttonMixin;
 }
 
 button:hover {
-    @include buttonMixin;
-    border: 1px solid white !important;
-    background-color: black !important;
-    color: white !important;
+  @include buttonMixin;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: white !important;
 }
 
 .primary-login {
-    @include buttonMixin;
-    color: $primaryColor !important;
+  @include buttonMixin;
+  color: $primaryColor !important;
 }
 
 .primary-login:hover {
-    @include buttonMixin;
-    border: 1px solid white !important;
-    background-color: black !important;
-    color: $primaryColor !important;
+  @include buttonMixin;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: $primaryColor !important;
 }

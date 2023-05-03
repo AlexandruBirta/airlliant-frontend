@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'airlliant-tickets',
-  templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.scss']
+    selector: 'airlliant-tickets',
+    templateUrl: './tickets.component.html',
+    styleUrls: ['./tickets.component.scss']
 })
 export class TicketsComponent {
 

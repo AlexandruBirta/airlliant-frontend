@@ -1,36 +1,36 @@
 .about-container {
-  position: absolute;
-  box-sizing: border-box;
-  padding: 30px;
-  left: 15%;
-  top: 50%;
-  transform: translate(-15%, -50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  z-index: 1;
-  background-color: white;
-  border: 10px dimgrey;
-  width: 1071px;
-  height: 450px;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 30px;
+    left: 15%;
+    top: 50%;
+    transform: translate(-15%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    z-index: 1;
+    background-color: white;
+    border: 10px dimgrey;
+    width: 1071px;
+    height: 450px;
 }
 
 h1 {
-  margin-top: 15px;
-  font-size: 59px;
-  font-family: "DM Serif Display", sans-serif;
-  color: #BF2051;
+    margin-top: 15px;
+    font-size: 59px;
+    font-family: "DM Serif Display", sans-serif;
+    color: #BF2051;
 }
 
 p {
-  align-self: flex-start;
-  font-size: 24px;
-  letter-spacing: 1px;
-  margin: 15px;
-  line-height: 1.2;
-  font-family: "DM Serif Display", sans-serif;
+    align-self: flex-start;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin: 15px;
+    line-height: 1.2;
+    font-family: "DM Serif Display", sans-serif;
 }
 
 /*# sourceMappingURL=about.component.css.map */

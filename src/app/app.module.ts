@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -19,9 +19,11 @@ import {RegisterComponent} from './register/register.component';
 import {APP_CONFIG, APP_CONFIG_SERVICE} from "./app-config/app-config.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { TicketsComponent } from './tickets/tickets.component';
+import {HomeComponent} from './home/home.component';
+import {AboutComponent} from './about/about.component';
+import {TicketsComponent} from './tickets/tickets.component';
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+import {initializeKeycloak} from "./security/keycloak.init";
 
 @NgModule({
     declarations: [
@@ -47,14 +49,28 @@ import { TicketsComponent } from './tickets/tickets.component';
         MatInputModule,
         MatCardModule,
         MatButtonToggleModule,
-        MatTableModule
+        MatTableModule,
+        KeycloakAngularModule
     ],
     providers: [
         {
             provide: APP_CONFIG_SERVICE,
             useValue: APP_CONFIG
-        }],
+        },
+        {
+            provide: APP_INITIALIZER,
+            useFactory: initializeKeycloak,
+            multi: true,
+            deps: [KeycloakService]
+        },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: KeycloakTokenInterceptor,
+        //     multi: true,
+        // }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+

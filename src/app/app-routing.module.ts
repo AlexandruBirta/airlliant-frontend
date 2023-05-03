@@ -5,6 +5,7 @@ import {RegisterComponent} from "./register/register.component";
 import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
 import {TicketsComponent} from "./tickets/tickets.component";
+import {AuthGuard} from "./security/keycloak.guard";
 
 const routes: Routes = [
     {
@@ -13,7 +14,8 @@ const routes: Routes = [
     },
     {
         path: 'tickets',
-        component: TicketsComponent
+        component: TicketsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'about',
@@ -29,7 +31,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/home',
         pathMatch: 'full'
     }
 ];

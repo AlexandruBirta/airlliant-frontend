@@ -1,40 +1,45 @@
 <nav class="custom-top-nav navbar fixed-top navbar-expand-lg navbar-dark">
 
-        <a class="navbar-brand" href="#">
-            <img src="assets/logo-no-background.svg" alt="Airlliant" width="143" height="80">
-        </a>
-    <div class="nav-right-button-container">
-        <span
-                *ngIf="loginService.isLoggedIn"
-                class="navbar-text"
-                style="font-size: 0.8em"
+    <a
+            class="navbar-brand"
+            href="#"
+    >
+        <img
+                src="assets/logo-no-background.svg"
+                alt="Airlliant"
+                width="143"
+                height="80"
         >
-        Hello {{loggedUserFirstName}} {{loggedUserLastName}}
-        </span>
+    </a>
+    <div class="nav-right-button-container">
         <button
                 class="login-normal-button"
                 color="primary"
-                mat-fab extended
+                mat-fab
+                extended
                 routerLink="home"
         >
             Home
         </button>
         <button
                 color="primary"
-                mat-fab extended
+                mat-fab
+                extended
         >
             Search
         </button>
         <button
                 color="primary"
-                mat-fab extended
+                mat-fab
+                extended
                 routerLink="tickets"
         >
             My Tickets
         </button>
         <button
                 color="primary"
-                mat-fab extended
+                mat-fab
+                extended
                 routerLink="about"
         >
             About
@@ -42,7 +47,8 @@
         <button
                 class="primary-login"
                 color="primary"
-                mat-fab extended
+                mat-fab
+                extended
                 routerLink="login"
         >
             Login

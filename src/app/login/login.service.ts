@@ -1,55 +1,46 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../model/user.interface";
-import {BehaviorSubject, Observable} from "rxjs";
 import {APP_CONFIG} from "../app-config/app-config.service";
+import {KeycloakService} from "keycloak-angular";
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginService {
 
-    userSubject: BehaviorSubject<User> = new BehaviorSubject<User>({
-        userId: 1,
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        insertedDate: new Date(),
-        updatedDate: new Date()
-    });
+    response!: Response;
+    tokens: { access_token: string; refresh_token: string } = {access_token: '', refresh_token: ''};
 
-    isLoggedIn: boolean = false;
-
-    user$!: Observable<User>;
-
-    constructor(private expenseTrackerClient: HttpClient) {
+    constructor(private expenseTrackerClient: HttpClient, private keycloakService: KeycloakService) {
     }
 
-    getUser(email: string) {
-        return this.expenseTrackerClient.get<User>(`${APP_CONFIG.apiBaseUrl}/${APP_CONFIG.usersPath}/email/${email}`).toPromise();
-    }
+    async login(username: string, password: string) {
 
-    areCredentialsValid(user: User | undefined, email: string, password: string): boolean {
-        return user?.email === email && this.getDecryptedPassword(user?.password) === password;
-    }
+        this.response = await fetch(APP_CONFIG.keycloakLoginUrl, {
+            method: "POST",
+            body: `client_id=airlliant-client&username=${username}&password=${password}&grant_type=password`,
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded"
+            }
+        });
 
-    getDecryptedPassword(password: string): string {
-        return atob(password);
-    }
+        this.tokens = await this.response.json().then(({access_token, refresh_token}) => {
+            return ({access_token, refresh_token});
+        });
 
-    async login(user: User | undefined, email: string, password: string) {
-
-        if (this.areCredentialsValid(user, email, password)) {
-            this.isLoggedIn = true;
-            sessionStorage.setItem('loggedUserFirstName', <string>user?.firstName);
-            sessionStorage.setItem('loggedUserLastName', <string>user?.lastName);
-            sessionStorage.setItem('loggedUserEmail', <string>user?.email);
-        }
-
-        console.log(`User is logged in: ${this.isLoggedIn}`);
-
-        return this.isLoggedIn;
+        await this.keycloakService.init({
+            config: {
+                url: 'http://localhost:9090',
+                realm: 'Airlliant',
+                clientId: 'airlliant-client'
+            },
+            initOptions: {
+                token: this.tokens.access_token,
+                refreshToken: this.tokens.refresh_token,
+                checkLoginIframe: false
+            },
+            enableBearerInterceptor: true,
+        });
 
     }
 

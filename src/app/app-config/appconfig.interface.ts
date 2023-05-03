@@ -3,4 +3,5 @@ export interface AppConfig {
     usersPath: string;
     tripsPath: string;
     expensesPath: string;
+    keycloakLoginUrl: string;
 }

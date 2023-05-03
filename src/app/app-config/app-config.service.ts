@@ -8,5 +8,6 @@ export const APP_CONFIG: AppConfig = {
     apiBaseUrl: environment.apiBaseUrl,
     usersPath: environment.usersPath,
     tripsPath: environment.tripsPath,
-    expensesPath: environment.expensesPath
+    expensesPath: environment.expensesPath,
+    keycloakLoginUrl: environment.keycloakLoginUrl
 };

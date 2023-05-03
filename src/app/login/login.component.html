@@ -10,18 +10,24 @@
             [formGroup]="loginForm"
     >
         <div>
-            <mat-form-field appearance="outline" class="login-field">
+            <mat-form-field
+                    appearance="outline"
+                    class="login-field"
+            >
                 <mat-label>Email</mat-label>
                 <input
                         autocomplete="on"
-                        formControlName="email"
+                        formControlName="username"
                         matInput
-                        placeholder="Email"
-                        type="email"
+                        placeholder="Username"
+                        type="text"
                 >
             </mat-form-field>
             <br>
-            <mat-form-field appearance="outline" class="login-field">
+            <mat-form-field
+                    appearance="outline"
+                    class="login-field"
+            >
                 <mat-label>Password</mat-label>
                 <input
                         autocomplete="on"
@@ -41,14 +47,16 @@
                     [disabled]="loginForm.invalid"
                     class="mat-primary-login"
                     color="primary"
-                    mat-fab extended
+                    mat-fab
+                    extended
             >Login
             </button>
             <button
                     [disabled]="loginForm.invalid"
                     class="mat-primary-login"
                     color="primary"
-                    mat-fab extended
+                    mat-fab
+                    extended
                     routerLink="../register"
                     type="button"
             >Register
