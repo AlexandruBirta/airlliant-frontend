@@ -11,7 +11,7 @@ export class LoginService {
     response!: Response;
     tokens: { access_token: string; refresh_token: string } = {access_token: '', refresh_token: ''};
 
-    constructor(private expenseTrackerClient: HttpClient, private keycloakService: KeycloakService) {
+    constructor(private keycloakService: KeycloakService) {
     }
 
     async login(username: string, password: string) {

@@ -1,12 +1,28 @@
+<div id="login-background"></div>
 <mat-card class="register-center-container">
+    <br>
+    <br>
+    <button
+            class="back-button"
+            mat-mini-fab
+            color="accent"
+            routerLink="../login"
+    >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <h1>Register</h1>
+    <br>
+    <br>
     <form
-            (ngSubmit)="register()"
+            (ngSubmit)="register($event)"
             [formGroup]="registerForm"
             class="example-form"
     >
-
         <div>
-            <mat-form-field class="register-field">
+            <mat-form-field
+                    appearance="outline"
+                    class="register-field"
+            >
                 <mat-label>First Name</mat-label>
                 <input
                         autocomplete="on"
@@ -16,7 +32,10 @@
                         type="text"
                 >
             </mat-form-field>
-            <mat-form-field class="register-field">
+            <mat-form-field
+                    appearance="outline"
+                    class="register-field"
+            >
                 <mat-label>Last Name</mat-label>
                 <input
                         autocomplete="on"
@@ -26,7 +45,10 @@
                         type="text"
                 >
             </mat-form-field>
-            <mat-form-field class="register-field">
+            <mat-form-field
+                    appearance="outline"
+                    class="register-field"
+            >
                 <mat-label>Email</mat-label>
                 <input
                         autocomplete="on"
@@ -37,7 +59,10 @@
                 >
             </mat-form-field>
             <br>
-            <mat-form-field class="register-field">
+            <mat-form-field
+                    appearance="outline"
+                    class="register-field"
+            >
                 <mat-label>Password</mat-label>
                 <input
                         autocomplete="on"
@@ -47,21 +72,31 @@
                         type="password"
                 >
             </mat-form-field>
+            <mat-form-field
+                    appearance="outline"
+                    class="register-field"
+            >
+                <mat-label>Confirm Password</mat-label>
+                <input
+                        autocomplete="on"
+                        formControlName="confirmPassword"
+                        matInput
+                        placeholder="Password"
+                        type="password"
+                >
+            </mat-form-field>
         </div>
-
-        <div>
+        <br>
             <button
-                    (click)="register()"
+                    (click)="register($event)"
                     [disabled]="registerForm.invalid"
                     class="register-button"
                     color="primary"
-                    mat-raised-button
-                    routerLink="../login"
+                    mat-fab
+                    extended
             >Register
             </button>
-        </div>
-
-
+        <br>
     </form>
 </mat-card>
 

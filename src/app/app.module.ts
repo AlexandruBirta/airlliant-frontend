@@ -24,6 +24,7 @@ import {AboutComponent} from './about/about.component';
 import {TicketsComponent} from './tickets/tickets.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializeKeycloak} from "./security/keycloak.init";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {initializeKeycloak} from "./security/keycloak.init";
         MatCardModule,
         MatButtonToggleModule,
         MatTableModule,
-        KeycloakAngularModule
+        KeycloakAngularModule,
+        MatIconModule
     ],
     providers: [
         {
@@ -62,12 +64,7 @@ import {initializeKeycloak} from "./security/keycloak.init";
             useFactory: initializeKeycloak,
             multi: true,
             deps: [KeycloakService]
-        },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: KeycloakTokenInterceptor,
-        //     multi: true,
-        // }
+        }
     ],
     bootstrap: [AppComponent]
 })

@@ -1,7 +1,6 @@
 export interface AppConfig {
     apiBaseUrl: string;
-    usersPath: string;
-    tripsPath: string;
-    expensesPath: string;
+    keycloakTokenUrl: string;
     keycloakLoginUrl: string;
+    keycloakAddUserUrl: string;
 }

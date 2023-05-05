@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "./register.service";
+import {LoginValidator} from "../login/validators/login-validator";
 
 @Component({
     selector: 'airlliant-register',
@@ -19,25 +20,43 @@ export class RegisterComponent implements OnInit {
     ngOnInit(): void {
 
         this.registerForm = this.formBuilder.group({
-            firstName: [''],
-            lastName: [''],
-            email: [''],
-            password: ['']
-        })
+            firstName: ['', {
+                validators: [Validators.required]
+            }],
+            lastName: ['', {
+                validators: [Validators.required]
+            }],
+            email: ['', {
+                validators: [Validators.required, Validators.email]
+            }],
+            password: ['', {
+                validators: [Validators.required]
+            }],
+            confirmPassword: ['', {
+                validators: [Validators.required, LoginValidator.validateMatchingPasswords]
+            }]
+        },
+            {
+                // updateOn: 'blur',
+                validators: [
+                    LoginValidator.validateMatchingPasswords
+                ]
+            })
 
     }
 
-    register() {
+    register($event: MouseEvent) {
 
-        console.log(this.registerForm.getRawValue());
-
+        $event.preventDefault();
 
         this.registerService.register(
-            this.registerForm.get('firstName')?.getRawValue(),
-            this.registerForm.get('lastName')?.getRawValue(),
-            this.registerForm.get('email')?.getRawValue(),
-            this.registerForm.get('password')?.getRawValue(),
+            this.registerForm.get('firstName')?.value,
+            this.registerForm.get('lastName')?.value,
+            this.registerForm.get('email')?.value,
+            this.registerForm.get('password')?.value,
         );
+
+
     }
 
 }

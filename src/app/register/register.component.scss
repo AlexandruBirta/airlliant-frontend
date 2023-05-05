@@ -1,39 +1,43 @@
-.register-center-container {
+@import "../../scss/variables";
 
-  --bs-dark-rgb: 33, 37, 41;
-  --bs-bg-opacity: 1;
+.register-center-container {
 
   position: absolute;
   box-sizing: border-box;
-  padding: 20px;
-
-  width: 260px;
+  padding: 30px;
 
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
   z-index: 1;
 
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+  background-color: white;
+
+  border: 10px dimgrey;
+  width: 485px;
+  height: 730px;
 
 }
 
-.register-button {
-
-  width: 70px;
-  //margin-top: 30px;
-  margin-right: 10%;
-  margin-left: 10px;
-
+h1 {
+  font-size: 44px;
+  font-family: 'DM Serif Display', sans-serif;
+  color: $primaryColor;
 }
 
 .register-field {
-  margin-right: 10px;
-  //margin-left: 10px;
+  width: 272px;
+  height: 42px;
+  margin: 20px;
+}
+
+.back-button {
+  align-self: flex-start;
+  margin-top: 10px;
 }

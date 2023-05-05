@@ -1,38 +1,89 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {User} from "../model/user.interface";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {KeycloakUser} from "../model/keycloak-user.interface";
+import {Credential} from "../model/keycloak-credential.interface";
 import {APP_CONFIG} from "../app-config/app-config.service";
+import {map} from "rxjs";
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class RegisterService {
 
-    user: User = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: ''
+
+    constructor(private keycloakClient: HttpClient) {
     }
 
-    constructor(private expenseTrackerClient: HttpClient) {
-    }
-
-    register(firstName: string,
-             lastName: string,
-             email: string,
-             password: string
+    async register(firstName: string,
+                   lastName: string,
+                   email: string,
+                   password: string
     ) {
 
-        this.user.firstName = firstName;
-        this.user.lastName = lastName;
-        this.user.email = email;
-        this.user.password = password;
+        const keycloakUser: KeycloakUser = {
+            enabled: true,
+            username: '',
+            email: '',
+            firstName: '',
+            lastName: '',
+            credentials: [],
+            requiredActions: [],
+            groups: [],
+            attributes: {
+                locale: [
+                    "en"
+                ]
+            }
+        };
 
-        console.log(this.user);
+        keycloakUser.username = `${firstName}.${lastName}`.toLowerCase();
+        keycloakUser.email = email;
+        keycloakUser.firstName = firstName;
+        keycloakUser.lastName = lastName;
 
-        this.expenseTrackerClient.post(`${APP_CONFIG.apiBaseUrl}/${APP_CONFIG.usersPath}`, this.user).subscribe(() => {
-        });
+        const credential: Credential = {
+            type: 'password',
+            value: password,
+            temporary: false
+        }
+
+        keycloakUser.credentials.push(credential);
+
+        console.log(keycloakUser);
+
+        // const keycloakTokenHttpOptions = {
+        //     headers: new HttpHeaders({
+        //         'Content-Type': 'application/x-www-form-urlencoded'
+        //     })
+        // };
+        //
+        // this.keycloakClient.post(
+        //     APP_CONFIG.keycloakTokenUrl,
+        //     `client_id=admin-cli-client&username=admin&password=admin&grant_type=password`,
+        //     keycloakTokenHttpOptions
+        // ).subscribe(data => {
+        //     data = JSON.parse(data['']);
+        //
+        // });
+        //
+        // const keycloakRegisterHttpOptions = {
+        //     headers: new HttpHeaders({
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //         Authorization: 'my-auth-token'
+        //     })
+        // };
+        //
+        // const addUser = this.keycloakClient.post(
+        //     APP_CONFIG.keycloakAddUserUrl,
+        //     `client_id=admin-cli-client&username=admin&password=admin&grant_type=password`,
+        //     keycloakRegisterHttpOptions
+        // ).subscribe(data => {
+        //     return data
+        // });
+
+
+
     }
 
 }
