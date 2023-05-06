@@ -20,22 +20,22 @@ export class RegisterComponent implements OnInit {
     ngOnInit(): void {
 
         this.registerForm = this.formBuilder.group({
-            firstName: ['', {
-                validators: [Validators.required]
-            }],
-            lastName: ['', {
-                validators: [Validators.required]
-            }],
-            email: ['', {
-                validators: [Validators.required, Validators.email]
-            }],
-            password: ['', {
-                validators: [Validators.required]
-            }],
-            confirmPassword: ['', {
-                validators: [Validators.required, LoginValidator.validateMatchingPasswords]
-            }]
-        },
+                firstName: ['', {
+                    validators: [Validators.required]
+                }],
+                lastName: ['', {
+                    validators: [Validators.required]
+                }],
+                email: ['', {
+                    validators: [Validators.required, Validators.email]
+                }],
+                password: ['', {
+                    validators: [Validators.required]
+                }],
+                confirmPassword: ['', {
+                    validators: [Validators.required, LoginValidator.validateMatchingPasswords]
+                }]
+            },
             {
                 // updateOn: 'blur',
                 validators: [
@@ -55,7 +55,6 @@ export class RegisterComponent implements OnInit {
             this.registerForm.get('email')?.value,
             this.registerForm.get('password')?.value,
         );
-
 
     }
 

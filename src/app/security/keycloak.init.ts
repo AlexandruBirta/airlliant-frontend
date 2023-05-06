@@ -1,15 +1,18 @@
 import {KeycloakService} from "keycloak-angular";
+import {APP_CONFIG} from "../app-config/app-config.service";
 
 export function initializeKeycloak(keycloak: KeycloakService) {
     return () =>
         keycloak.init({
-            config: {
-                url: 'http://localhost:9090',
-                realm: 'Airlliant',
-                clientId: 'airlliant-client'
-            },
-            initOptions: {
-                checkLoginIframe: false
+                config: {
+                    url: APP_CONFIG.keycloakBaseUrl,
+                    realm: APP_CONFIG.keycloakAirlliantRealm,
+                    clientId: APP_CONFIG.keycloakAirlliantClient
+                },
+                initOptions: {
+                    checkLoginIframe: false
+                },
+                enableBearerInterceptor: true
             }
-        });
+        );
 }

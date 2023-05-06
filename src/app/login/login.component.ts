@@ -24,16 +24,16 @@ export class LoginComponent implements OnInit {
         })
     }
 
-    async login() {
+    login() {
 
-        await this.loginService.login(
-            this.loginForm.get('username')?.getRawValue(),
-            this.loginForm.get('password')?.getRawValue()
+        this.loginService.login(
+            this.loginForm.get('username')?.value,
+            this.loginForm.get('password')?.value
         )
 
         this.loginForm.reset();
 
-        await this.router.navigate(['../home']);
+        this.router.navigate(['../home']);
 
     }
 

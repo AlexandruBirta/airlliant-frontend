@@ -1,4 +1,3 @@
-import {Attribute} from "./keycloak-attribute.interface";
 import {Credential} from "./keycloak-credential.interface";
 
 export interface KeycloakUser {
