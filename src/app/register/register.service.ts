@@ -50,7 +50,6 @@ export class RegisterService {
                 return data;
 
             }
-
         );
 
 

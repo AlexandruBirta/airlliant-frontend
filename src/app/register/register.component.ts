@@ -46,7 +46,6 @@ export class RegisterComponent implements OnInit {
     }
 
 
-
     register($event: MouseEvent) {
 
         $event.preventDefault();
