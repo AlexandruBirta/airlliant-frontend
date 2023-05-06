@@ -9,12 +9,12 @@ import {KeycloakTokens} from "../model/keycloak-tokens.interface";
 })
 export class LoginService {
 
-    constructor(private keycloakClient: HttpClient, private keycloakService: KeycloakService) {
+    constructor(private httpClient: HttpClient, private keycloakService: KeycloakService) {
     }
 
     login(username: string, password: string) {
 
-        this.keycloakClient.post<KeycloakTokens>(
+        this.httpClient.post<KeycloakTokens>(
             APP_CONFIG.keycloakLoginUrl,
             `client_id=${APP_CONFIG.keycloakAirlliantClient}&username=${username}&password=${password}&grant_type=password`,
             {

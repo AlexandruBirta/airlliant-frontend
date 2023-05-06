@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {KeycloakUser} from "../model/keycloak-user.interface";
 import {APP_CONFIG} from "../app-config/app-config.service";
 import {KeycloakTokens} from "../model/keycloak-tokens.interface";
+import {User} from "../model/user.interface";
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import {KeycloakTokens} from "../model/keycloak-tokens.interface";
 })
 export class RegisterService {
 
-    constructor(private keycloakClient: HttpClient) {
+    constructor(private httpClient: HttpClient) {
     }
 
     register(firstName: string,
@@ -18,6 +19,44 @@ export class RegisterService {
              email: string,
              password: string
     ) {
+
+        const user: User = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            isNotifiable: true,
+            balance: 0.0
+        }
+
+        const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
+
+        this.httpClient.post<HttpResponse<any>>(
+            `${APP_CONFIG.apiBaseUrl}${APP_CONFIG.usersPath}`,
+            user,
+            {
+                headers: new HttpHeaders({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Basic ${apiBase64AuthCredentials}`
+                })
+            }
+        ).subscribe(
+            (data: HttpResponse<any>) => {
+
+                if (data.status === 201) {
+                    this.postKeycloakUser(firstName, lastName, email, password);
+                }
+
+                return data;
+
+            }
+
+        );
+
+
+    }
+
+    private postKeycloakUser(firstName: string, lastName: string, email: string, password: string) {
 
         const keycloakUser: KeycloakUser = {
             enabled: true,
@@ -41,9 +80,7 @@ export class RegisterService {
             }
         };
 
-        console.log(keycloakUser);
-
-        this.keycloakClient.post<KeycloakTokens>(
+        this.httpClient.post<KeycloakTokens>(
             APP_CONFIG.keycloakTokenUrl,
             `client_id=${APP_CONFIG.keycloakAdminCliClient}&username=${APP_CONFIG.keycloakMasterRealmUsername}&password=${APP_CONFIG.keycloakMasterRealmPassword}&grant_type=password`,
             {
@@ -54,7 +91,7 @@ export class RegisterService {
             }
         ).subscribe((tokens) => {
 
-                this.keycloakClient.post(
+                this.httpClient.post(
                     APP_CONFIG.keycloakAddUserUrl,
                     keycloakUser,
                     {
@@ -71,5 +108,4 @@ export class RegisterService {
         );
 
     }
-
 }

@@ -6,6 +6,9 @@ export const APP_CONFIG_SERVICE = new InjectionToken<AppConfig>('app.config');
 
 export const APP_CONFIG: AppConfig = {
     apiBaseUrl: environment.apiBaseUrl,
+    apiAuthUsername: environment.apiAuthUsername,
+    apiAuthPassword: environment.apiAuthPassword,
+    usersPath: environment.usersPath,
     keycloakBaseUrl: environment.keycloakBaseUrl,
     keycloakTokenUrl: environment.keycloakTokenUrl,
     keycloakLoginUrl: environment.keycloakLoginUrl,
