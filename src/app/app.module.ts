@@ -10,7 +10,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
@@ -26,6 +26,8 @@ import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializeKeycloak} from "./security/keycloak.init";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {SearchComponent} from "./search/search.component";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
     declarations: [
@@ -35,7 +37,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         RegisterComponent,
         HomeComponent,
         AboutComponent,
-        TicketsComponent
+        TicketsComponent,
+        SearchComponent
     ],
     imports: [
         BrowserModule,
@@ -54,7 +57,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         MatTableModule,
         KeycloakAngularModule,
         MatIconModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSelectModule,
+        FormsModule
     ],
     providers: [
         {
@@ -72,4 +77,3 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 })
 export class AppModule {
 }
-

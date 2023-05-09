@@ -1,0 +1,27 @@
+.search-container {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  z-index: 1;
+  background-color: white;
+  border: 10px dimgrey;
+  width: 799px;
+  height: 450px;
+}
+
+h1 {
+  font-size: 59px;
+  font-family: "DM Serif Display", sans-serif;
+  color: #BF2051;
+  align-self: flex-start;
+}
+
+/*# sourceMappingURL=search.component.css.map */

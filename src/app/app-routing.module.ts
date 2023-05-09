@@ -6,6 +6,7 @@ import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
 import {TicketsComponent} from "./tickets/tickets.component";
 import {AuthGuard} from "./security/keycloak.guard";
+import {SearchComponent} from "./search/search.component";
 
 const routes: Routes = [
     {
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'search',
+        component: SearchComponent
     },
     {
         path: '',
