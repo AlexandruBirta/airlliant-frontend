@@ -25,6 +25,7 @@ import {TicketsComponent} from './tickets/tickets.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializeKeycloak} from "./security/keycloak.init";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import {MatIconModule} from "@angular/material/icon";
         MatButtonToggleModule,
         MatTableModule,
         KeycloakAngularModule,
-        MatIconModule
+        MatIconModule,
+        MatSnackBarModule
     ],
     providers: [
         {

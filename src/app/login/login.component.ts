@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
-            username: [''],
+            email: [''],
             password: ['']
         })
     }
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     login() {
 
         this.loginService.login(
-            this.loginForm.get('username')?.value,
+            this.loginForm.get('email')?.value,
             this.loginForm.get('password')?.value
         )
 

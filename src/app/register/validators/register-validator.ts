@@ -1,6 +1,6 @@
 import {FormGroup} from "@angular/forms";
 
-export class LoginValidator {
+export class RegisterValidator {
 
     static validateMatchingPasswords(control: FormGroup) {
 

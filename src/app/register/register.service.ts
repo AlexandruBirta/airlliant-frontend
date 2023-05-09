@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {KeycloakUser} from "../model/keycloak-user.interface";
 import {APP_CONFIG} from "../app-config/app-config.service";
 import {KeycloakTokens} from "../model/keycloak-tokens.interface";
@@ -16,8 +16,7 @@ export class RegisterService {
 
     register(firstName: string,
              lastName: string,
-             email: string,
-             password: string
+             email: string
     ) {
 
         const user: User = {
@@ -30,7 +29,7 @@ export class RegisterService {
 
         const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
 
-        this.httpClient.post<HttpResponse<any>>(
+        return this.httpClient.post(
             `${APP_CONFIG.apiBaseUrl}${APP_CONFIG.usersPath}`,
             user,
             {
@@ -40,26 +39,16 @@ export class RegisterService {
                     Authorization: `Basic ${apiBase64AuthCredentials}`
                 })
             }
-        ).subscribe(
-            (data: HttpResponse<any>) => {
-
-                if (data.status === 201) {
-                    this.postKeycloakUser(firstName, lastName, email, password);
-                }
-
-                return data;
-
-            }
-        );
+        )
 
 
     }
 
-    private postKeycloakUser(firstName: string, lastName: string, email: string, password: string) {
+    postKeycloakUser(firstName: string, lastName: string, email: string, password: string) {
 
         const keycloakUser: KeycloakUser = {
             enabled: true,
-            username: `${firstName}.${lastName}`.toLowerCase(),
+            username: email,
             email: email,
             firstName: firstName,
             lastName: lastName,

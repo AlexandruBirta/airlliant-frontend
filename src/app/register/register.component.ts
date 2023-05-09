@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "./register.service";
-import {LoginValidator} from "../login/validators/login-validator";
+import {RegisterValidator} from "./validators/register-validator";
+import {HttpErrorResponse} from "@angular/common/http";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'airlliant-register',
@@ -13,7 +16,9 @@ export class RegisterComponent implements OnInit {
     registerForm!: FormGroup;
 
     constructor(private formBuilder: FormBuilder,
-                private registerService: RegisterService
+                private registerService: RegisterService,
+                private _snackBar: MatSnackBar,
+                private router: Router
     ) {
     }
 
@@ -33,13 +38,13 @@ export class RegisterComponent implements OnInit {
                     validators: [Validators.required]
                 }],
                 confirmPassword: ['', {
-                    validators: [Validators.required, LoginValidator.validateMatchingPasswords]
+                    validators: [Validators.required, RegisterValidator.validateMatchingPasswords]
                 }]
             },
             {
                 // updateOn: 'blur',
                 validators: [
-                    LoginValidator.validateMatchingPasswords
+                    RegisterValidator.validateMatchingPasswords
                 ]
             })
 
@@ -50,12 +55,32 @@ export class RegisterComponent implements OnInit {
 
         $event.preventDefault();
 
+        let firstName = this.registerForm.get('firstName')?.value;
+        let lastName = this.registerForm.get('lastName')?.value;
+        let email = this.registerForm.get('email')?.value;
+        let password = this.registerForm.get('password')?.value;
+
         this.registerService.register(
-            this.registerForm.get('firstName')?.value,
-            this.registerForm.get('lastName')?.value,
-            this.registerForm.get('email')?.value,
-            this.registerForm.get('password')?.value,
-        );
+            firstName,
+            lastName,
+            email
+        ).subscribe(
+            (data) => {
+                this.registerService.postKeycloakUser(firstName, lastName, email, password);
+                return data;
+            },
+            (error: HttpErrorResponse) => {
+                if (error.status === 400) {
+                    this.registerForm.get('email')?.setErrors({
+                        userAlreadyExists: true
+                    });
+                    this._snackBar.open(`User with email ${email} already exists!`, '', {
+                        duration: 3000
+                    });
+                }
+            });
+
+        this.router.navigate(['../login']);
 
     }
 
