@@ -1,26 +1,121 @@
 <div id="search-background"></div>
 <mat-card class="search-container">
 
-    <br>
-    <h1>Search Flights</h1>
 
+    <h1>Search Flights</h1>
+    <br>
+    <br>
     <form>
-        <mat-form-field appearance="fill">
-            <mat-label>From</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="food">
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>To</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="food">
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>From</mat-label>
+                <mat-select
+                        [(ngModel)]="selectedValue"
+                        name="food"
+                >
+                    <mat-option
+                            *ngFor="let food of foods"
+                            [value]="food.value"
+                    >
+                        {{food.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>To</mat-label>
+                <mat-select
+                        [(ngModel)]="selectedValue"
+                        name="food"
+                >
+                    <mat-option
+                            *ngFor="let food of foods"
+                            [value]="food.value"
+                    >
+                        {{food.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Departure</mat-label>
+                <input
+                        matInput
+                        [matDatepicker]="departure"
+                >
+                <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="departure"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #departure></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Arrival</mat-label>
+                <input
+                        matInput
+                        [matDatepicker]="arrival"
+                >
+                <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="arrival"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #arrival></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+
+        <div>
+            <mat-form-field
+                    appearance="outline"
+                    class="price-field"
+            >
+                <mat-label>Min. Price</mat-label>
+                <input
+                        [disabled]="!checkPrice.checked"
+                        autocomplete="on"
+                        matInput
+                        placeholder="Min. Price"
+                        type="number"
+                >
+            </mat-form-field>
+            <mat-form-field
+                    appearance="outline"
+                    class="price-field"
+            >
+                <mat-label>Max. Price</mat-label>
+                <input
+                        [disabled]="!checkPrice.checked"
+                        autocomplete="on"
+                        matInput
+                        placeholder="Max. Price"
+                        type="number"
+                >
+            </mat-form-field>
+
+        </div>
+
+        <br>
+
+        <div>
+            <mat-chip-listbox>
+                <mat-chip-option [selected]="true">One Way</mat-chip-option>
+                <mat-chip-option>Round Trip</mat-chip-option>
+                <mat-slide-toggle
+                    #checkPrice
+                    color="primary"
+                >Price range check
+                </mat-slide-toggle>
+
+            </mat-chip-listbox>
+        </div>
+
+        <button
+                class="normal-button"
+                color="primary"
+                mat-fab
+                extended
+        >Search
+        </button>
     </form>
+
 
 </mat-card>

@@ -30,8 +30,26 @@ h1 {
 }
 
 .back-button {
+    font-size: 25px !important;
+    margin: 17px !important;
+    box-shadow: none !important;
+    border: 1px solid black !important;
+    background-color: white !important;
+    color: black !important;
     align-self: flex-start;
     margin-top: 10px;
+}
+
+.back-button:hover {
+    font-size: 25px !important;
+    margin: 17px !important;
+    box-shadow: none !important;
+    border: 1px solid black !important;
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid white !important;
+    background-color: black !important;
+    color: white !important;
 }
 
 /*# sourceMappingURL=register.component.css.map */

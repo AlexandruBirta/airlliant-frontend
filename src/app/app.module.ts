@@ -28,6 +28,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {SearchComponent} from "./search/search.component";
 import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
     declarations: [
@@ -59,6 +63,10 @@ import {MatSelectModule} from "@angular/material/select";
         MatIconModule,
         MatSnackBarModule,
         MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatChipsModule,
+        MatSlideToggleModule,
         FormsModule
     ],
     providers: [

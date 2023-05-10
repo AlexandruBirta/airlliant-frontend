@@ -70,17 +70,31 @@ export class RegisterComponent implements OnInit {
                 return data;
             },
             (error: HttpErrorResponse) => {
+
+                console.log(error);
+
                 if (error.status === 400) {
+
                     this.registerForm.get('email')?.setErrors({
                         userAlreadyExists: true
                     });
+
                     this._snackBar.open(`User with email ${email} already exists!`, '', {
                         duration: 3000
                     });
+
+
+                } else if (error.status !== 201) {
+
+                    this._snackBar.open(`Application encountered an unexpected error.`, '', {
+                        duration: 3000
+                    });
+
                 }
+
             });
 
-        this.router.navigate(['../login']);
+        this.router.navigate(['../login']).then(r => r);
 
     }
 

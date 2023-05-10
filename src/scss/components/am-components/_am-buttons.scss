@@ -9,11 +9,11 @@
   color: black !important;
 }
 
-button {
+.normal-button {
   @include buttonMixin;
 }
 
-button:hover {
+.normal-button:hover {
   @include buttonMixin;
   border: 1px solid white !important;
   background-color: black !important;

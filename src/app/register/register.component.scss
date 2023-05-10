@@ -1,5 +1,14 @@
 @import "../../scss/variables";
 
+@mixin buttonMixin {
+  font-size: 25px !important;
+  margin: 17px !important;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+}
+
 .register-center-container {
 
   position: absolute;
@@ -38,6 +47,14 @@ h1 {
 }
 
 .back-button {
+  @include buttonMixin;
   align-self: flex-start;
   margin-top: 10px;
+}
+
+.back-button:hover {
+  @include buttonMixin;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: white !important;
 }
