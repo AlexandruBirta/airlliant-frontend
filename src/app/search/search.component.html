@@ -5,33 +5,34 @@
     <h1>Search Flights</h1>
     <br>
     <br>
-    <form>
+    <form
+            (submit)="search()"
+            [formGroup]="searchForm"
+    >
         <div>
             <mat-form-field appearance="outline">
                 <mat-label>From</mat-label>
                 <mat-select
-                        [(ngModel)]="selectedValue"
-                        name="food"
+                        formControlName="fromAirport"
                 >
                     <mat-option
-                            *ngFor="let food of foods"
-                            [value]="food.value"
+                            *ngFor="let flight of $flights | async"
+                            [value]="flight.fromAirport"
                     >
-                        {{food.viewValue}}
+                        {{flight.fromCountry}}, {{flight.fromAirport}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>To</mat-label>
                 <mat-select
-                        [(ngModel)]="selectedValue"
-                        name="food"
+                        formControlName="toAirport"
                 >
                     <mat-option
-                            *ngFor="let food of foods"
-                            [value]="food.value"
+                            *ngFor="let flight of $flights | async"
+                            [value]="flight.toAirport"
                     >
-                        {{food.viewValue}}
+                        {{flight.toCountry}}, {{flight.toAirport}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -40,6 +41,7 @@
                 <mat-label>Departure</mat-label>
                 <input
                         matInput
+                        formControlName="departure"
                         [matDatepicker]="departure"
                 >
                 <mat-datepicker-toggle
@@ -52,6 +54,7 @@
                 <mat-label>Arrival</mat-label>
                 <input
                         matInput
+                        formControlName="arrival"
                         [matDatepicker]="arrival"
                 >
                 <mat-datepicker-toggle
@@ -70,9 +73,9 @@
             >
                 <mat-label>Min. Price</mat-label>
                 <input
-                        [disabled]="!checkPrice.checked"
                         autocomplete="on"
                         matInput
+                        formControlName="minPrice"
                         placeholder="Min. Price"
                         type="number"
                 >
@@ -83,9 +86,9 @@
             >
                 <mat-label>Max. Price</mat-label>
                 <input
-                        [disabled]="!checkPrice.checked"
                         autocomplete="on"
                         matInput
+                        formControlName="maxPrice"
                         placeholder="Max. Price"
                         type="number"
                 >
@@ -98,10 +101,15 @@
         <div>
             <mat-chip-listbox>
                 <mat-chip-option [selected]="true">One Way</mat-chip-option>
-                <mat-chip-option>Round Trip</mat-chip-option>
+                <mat-chip-option
+                >Round Trip
+                </mat-chip-option>
                 <mat-slide-toggle
-                    #checkPrice
-                    color="primary"
+                        [(ngModel)]="isPriceCheckEnabled"
+                        [ngModelOptions]="{standalone: true}"
+                        (change)="refreshPriceCheckForm()"
+                        name="checkPrice"
+                        color="primary"
                 >Price range check
                 </mat-slide-toggle>
 

@@ -3,6 +3,7 @@ export interface AppConfig {
     apiAuthUsername: string;
     apiAuthPassword: string;
     usersPath: string;
+    flightsPath: string;
     keycloakBaseUrl: string;
     keycloakTokenUrl: string;
     keycloakLoginUrl: string;
