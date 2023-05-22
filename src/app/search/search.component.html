@@ -99,11 +99,11 @@
         <br>
 
         <div>
-            <mat-chip-listbox>
+            <mat-chip-listbox
+                    formControlName="roundTrip"
+            >
                 <mat-chip-option [selected]="true">One Way</mat-chip-option>
-                <mat-chip-option
-                >Round Trip
-                </mat-chip-option>
+                <mat-chip-option>Round Trip</mat-chip-option>
                 <mat-slide-toggle
                         [(ngModel)]="isPriceCheckEnabled"
                         [ngModelOptions]="{standalone: true}"
@@ -112,7 +112,6 @@
                         color="primary"
                 >Price range check
                 </mat-slide-toggle>
-
             </mat-chip-listbox>
         </div>
 

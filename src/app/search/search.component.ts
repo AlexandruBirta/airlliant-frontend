@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {APP_CONFIG} from "../app-config/app-config.service";
 import {Observable} from "rxjs";
@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
 
     isPriceCheckEnabled: boolean = false;
     searchForm!: FormGroup;
+    chipList: string = '';
 
     $flights!: Observable<Flight[]>;
 
@@ -48,17 +49,9 @@ export class SearchComponent implements OnInit {
             arrival: ['', {
                 validators: [Validators.required]
             }],
-            minPrice: {
-                value: ['', {
-                    validators: [Validators.required]
-                }], disabled: !this.isPriceCheckEnabled
-            },
-            maxPrice: {
-                value: ['', {
-                    validators: [Validators.required]
-                }], disabled: !this.isPriceCheckEnabled
-            },
-            roundTrip: ['', {
+            minPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}, Validators.required),
+            maxPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}, Validators.required),
+            roundTrip: ['One Way', {
                 validators: [Validators.required]
             }]
         });
@@ -69,9 +62,13 @@ export class SearchComponent implements OnInit {
         if (!this.isPriceCheckEnabled) {
             this.searchForm.controls['minPrice'].disable();
             this.searchForm.controls['maxPrice'].disable();
+            this.searchForm.controls['minPrice'].setValue('');
+            this.searchForm.controls['maxPrice'].setValue('');
         } else {
             this.searchForm.controls['minPrice'].enable();
             this.searchForm.controls['maxPrice'].enable();
+            this.searchForm.controls['minPrice'].setValue('');
+            this.searchForm.controls['maxPrice'].setValue('');
         }
     }
 
