@@ -29,9 +29,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {SearchComponent} from "./search/search.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_FORMATS, MatNativeDateModule} from "@angular/material/core";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
     declarations: [
@@ -64,6 +65,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
         MatSnackBarModule,
         MatSelectModule,
         MatDatepickerModule,
+        MatMomentDateModule,
         MatNativeDateModule,
         MatChipsModule,
         MatSlideToggleModule,
@@ -79,7 +81,12 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
             useFactory: initializeKeycloak,
             multi: true,
             deps: [KeycloakService]
+        },
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: MAT_MOMENT_DATE_FORMATS
         }
+
     ],
     bootstrap: [AppComponent]
 })

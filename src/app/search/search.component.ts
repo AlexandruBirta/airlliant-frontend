@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {APP_CONFIG} from "../app-config/app-config.service";
 import {Observable} from "rxjs";
 import {Flight} from "../model/flight.interface";
+import * as moment from "moment";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class SearchComponent implements OnInit {
     chipList: string = '';
 
     $flights!: Observable<Flight[]>;
+    $filteredFlights!: Observable<Flight[]>;
 
     constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
 
@@ -27,7 +29,7 @@ export class SearchComponent implements OnInit {
 
         const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
 
-        this.$flights = this.httpClient.get<Flight[]>(`${APP_CONFIG.apiBaseUrl}${APP_CONFIG.flightsPath}`,
+        this.$flights = this.httpClient.get<Flight[]>(`${APP_CONFIG.apiBaseUrl}${APP_CONFIG.flightsPath}/all`,
             {
                 headers: new HttpHeaders({
                     'Accept': 'application/json',
@@ -43,14 +45,14 @@ export class SearchComponent implements OnInit {
             toAirport: ['', {
                 validators: [Validators.required]
             }],
-            departure: ['', {
+            departure: [moment(), {
                 validators: [Validators.required]
             }],
-            arrival: ['', {
+            arrival: [moment(), {
                 validators: [Validators.required]
             }],
-            minPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}, Validators.required),
-            maxPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}, Validators.required),
+            minPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}),
+            maxPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}),
             roundTrip: ['One Way', {
                 validators: [Validators.required]
             }]
@@ -73,7 +75,39 @@ export class SearchComponent implements OnInit {
     }
 
     search() {
-        console.log(JSON.stringify(this.searchForm.getRawValue()));
+
+        const departureDate: string = moment(this.searchForm.get('departure')?.value).toISOString();
+        const arrivalDate: string = moment(this.searchForm.get('arrival')?.value).toISOString();
+
+        let filter: string = `?fromAirport=${this.searchForm.get('fromAirport')?.value}&toAirport=${this.searchForm.get('toAirport')?.value}&departure=${departureDate}&arrival=${arrivalDate}`;
+
+        if (this.searchForm.get('roundTrip')?.value === 'Round Trip') {
+            filter += `&roundTrip=true`
+        } else {
+            filter += `&roundTrip=false`
+        }
+
+        if (this.searchForm.get('minPrice')?.value !== '') {
+            filter += `&minPrice=${this.searchForm.get('minPrice')?.value}`;
+        }
+
+        if (this.searchForm.get('maxPrice')?.value !== '') {
+            filter += `&maxPrice=${this.searchForm.get('maxPrice')?.value}`;
+        }
+
+        const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
+
+        this.httpClient.get<Flight[]>(`${APP_CONFIG.apiBaseUrl}${APP_CONFIG.flightsPath}${filter}`,
+            {
+                headers: new HttpHeaders({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Basic ${apiBase64AuthCredentials}`
+                })
+            }).subscribe(data => {
+            console.log(JSON.stringify(data))
+        });
+
     }
 
 
