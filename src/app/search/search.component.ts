@@ -5,6 +5,9 @@ import {APP_CONFIG} from "../app-config/app-config.service";
 import {Observable} from "rxjs";
 import {Flight} from "../model/flight.interface";
 import * as moment from "moment";
+import {Router} from "@angular/router";
+import {SearchService} from "./search.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -18,11 +21,16 @@ export class SearchComponent implements OnInit {
     searchForm!: FormGroup;
     chipList: string = '';
 
+    inputTest: string = 'test inputs';
+
     $flights!: Observable<Flight[]>;
-    $filteredFlights!: Observable<Flight[]>;
 
-    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
-
+    constructor(
+        private formBuilder: FormBuilder,
+        private httpClient: HttpClient,
+        private router: Router,
+        private searchService: SearchService,
+        private _snackBar: MatSnackBar) {
     }
 
     ngOnInit(): void {
@@ -39,21 +47,21 @@ export class SearchComponent implements OnInit {
             });
 
         this.searchForm = this.formBuilder.group({
-            fromAirport: ['', {
+            fromAirport: ['LHR', {
                 validators: [Validators.required]
             }],
-            toAirport: ['', {
+            toAirport: ['MDR', {
                 validators: [Validators.required]
             }],
-            departure: [moment(), {
+            departure: [moment('Mon Jul 03 2023 00:00:00 GMT+0300 (Eastern European Summer Time)').toISOString(), {
                 validators: [Validators.required]
             }],
-            arrival: [moment(), {
+            arrival: [moment('Tue Jul 04 2023 00:00:00 GMT+0300 (Eastern European Summer Time)').toISOString(), {
                 validators: [Validators.required]
             }],
             minPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}),
             maxPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}),
-            roundTrip: ['One Way', {
+            roundTrip: ['Round Trip', {
                 validators: [Validators.required]
             }]
         });
@@ -95,18 +103,17 @@ export class SearchComponent implements OnInit {
             filter += `&maxPrice=${this.searchForm.get('maxPrice')?.value}`;
         }
 
-        const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
-
-        this.httpClient.get<Flight[]>(`${APP_CONFIG.apiBaseUrl}${APP_CONFIG.flightsPath}${filter}`,
-            {
-                headers: new HttpHeaders({
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    Authorization: `Basic ${apiBase64AuthCredentials}`
-                })
-            }).subscribe(data => {
-            console.log(JSON.stringify(data))
+        this.searchService.filter = filter;
+        this.searchService.searchFlights().subscribe(flights => {
+            if (flights.length > 0) {
+                this.router.navigate(['/search/searchResults']).then(r => r);
+            } else {
+                this._snackBar.open(`No flights found!`, '', {
+                    duration: 3000
+                });
+            }
         });
+
 
     }
 

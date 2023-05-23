@@ -33,6 +33,7 @@ import {MAT_DATE_FORMATS, MatNativeDateModule} from "@angular/material/core";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-moment-adapter";
+import {SearchResultsComponent} from './search/search-results/search-results.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-mo
         HomeComponent,
         AboutComponent,
         TicketsComponent,
-        SearchComponent
+        SearchComponent,
+        SearchResultsComponent
     ],
     imports: [
         BrowserModule,

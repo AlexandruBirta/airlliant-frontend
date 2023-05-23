@@ -7,6 +7,7 @@ import {AboutComponent} from "./about/about.component";
 import {TicketsComponent} from "./tickets/tickets.component";
 import {AuthGuard} from "./security/keycloak.guard";
 import {SearchComponent} from "./search/search.component";
+import {SearchResultsComponent} from "./search/search-results/search-results.component";
 
 const routes: Routes = [
     {
@@ -32,7 +33,11 @@ const routes: Routes = [
     },
     {
         path: 'search',
-        component: SearchComponent
+        component: SearchComponent,
+    },
+    {
+        path: 'search/searchResults',
+        component: SearchResultsComponent
     },
     {
         path: '',

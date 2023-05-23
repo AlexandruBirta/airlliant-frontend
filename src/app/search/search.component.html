@@ -102,8 +102,8 @@
             <mat-chip-listbox
                     formControlName="roundTrip"
             >
-                <mat-chip-option [selected]="true">One Way</mat-chip-option>
-                <mat-chip-option>Round Trip</mat-chip-option>
+                <mat-chip-option>One Way</mat-chip-option>
+                <mat-chip-option [selected]="true">Round Trip</mat-chip-option>
                 <mat-slide-toggle
                         [(ngModel)]="isPriceCheckEnabled"
                         [ngModelOptions]="{standalone: true}"
@@ -116,7 +116,6 @@
         </div>
 
         <button
-                [disabled]="searchForm.invalid"
                 class="normal-button"
                 color="primary"
                 mat-fab
