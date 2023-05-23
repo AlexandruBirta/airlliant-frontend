@@ -16,10 +16,7 @@ export class SearchResultsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log("search results works!");
-        this.searchService.searchFlights().subscribe(flights => {
-            console.log(JSON.stringify(flights))
-        });
+        this.$filteredFlightResults = this.searchService.searchFlights();
     }
 
 

@@ -1,6 +1,6 @@
 @import "../../../scss/variables";
 
-.search-container {
+.search-results-card {
 
   position: absolute;
   box-sizing: border-box;
@@ -12,50 +12,77 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   align-content: flex-start;
   z-index: 1;
 
   background-color: white;
 
   border: 10px dimgrey;
-  width: 799px;
-  height: 500px;
+  width: 649px;
+  height: 700px;
+
+}
+
+.search-results-container::-webkit-scrollbar {
+  display: none;
+}
+
+.search-results-container {
+
+  position: absolute;
+  box-sizing: border-box;
+  padding: 50px;
+
+  background-color: white;
+
+  border: 10px dimgrey;
+  width: 640px;
+  height: 350px;
+
+  overflow: auto;
+  -ms-overflow-style: none;
 
 }
 
 h1 {
-  font-size: 59px;
-  font-family: 'DM Serif Display', sans-serif;
-  color: $primaryColor;
-  margin-left: 20px;
+  font-size: 59px !important;
+  font-family: 'DM Serif Display', sans-serif !important;
+  color: $primaryColor !important;
+  margin-top: 390px !important;
+  margin-bottom: 150px !important;
 }
-
-mat-form-field {
-  //margin: 28px 29px 14px 20px !important;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  width: 272px !important;
-  height: 42px !important
-}
-
-.price-field {
-  width: 126px !important;
-  height: 42px !important;
-}
-
-mat-slide-toggle {
-  margin: 10px !important;
-}
-
 
 button {
   margin-left: 0 !important;
-  margin-top: 30px !important;
+  margin-top: 350px !important;
+  margin-bottom: 380px !important;
 }
 
 button:hover {
   margin-left: 0 !important;
-  margin-top: 30px !important;
+  margin-top: 350px !important;
+  margin-bottom: 380px !important;
+}
+
+@mixin buttonMixin {
+  font-size: 25px !important;
+  margin-bottom: -390px !important;
+  margin-right: 560px;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.back-button {
+  @include buttonMixin;
+}
+
+.back-button:hover {
+  @include buttonMixin;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: white !important;
 }

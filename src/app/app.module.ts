@@ -34,6 +34,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-moment-adapter";
 import {SearchResultsComponent} from './search/search-results/search-results.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import {SearchResultsComponent} from './search/search-results/search-results.com
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        FormsModule,
         MatButtonModule,
         MatDividerModule,
         MatListModule,
@@ -71,7 +73,7 @@ import {SearchResultsComponent} from './search/search-results/search-results.com
         MatNativeDateModule,
         MatChipsModule,
         MatSlideToggleModule,
-        FormsModule
+        MatExpansionModule
     ],
     providers: [
         {
