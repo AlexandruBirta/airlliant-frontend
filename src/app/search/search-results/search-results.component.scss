@@ -1,7 +1,6 @@
 @import "../../../scss/variables";
 
 .search-results-card {
-
   position: absolute;
   box-sizing: border-box;
   padding: 50px;
@@ -22,7 +21,6 @@
   border: 10px dimgrey;
   width: 649px;
   height: 700px;
-
 }
 
 .search-results-container::-webkit-scrollbar {
@@ -30,7 +28,6 @@
 }
 
 .search-results-container {
-
   position: absolute;
   box-sizing: border-box;
   padding: 50px;
@@ -43,7 +40,6 @@
 
   overflow: auto;
   -ms-overflow-style: none;
-
 }
 
 h1 {

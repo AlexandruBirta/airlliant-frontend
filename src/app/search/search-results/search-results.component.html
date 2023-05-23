@@ -14,14 +14,11 @@
     <h1>Select Flight</h1>
 
     <mat-accordion class="search-results-container">
-        <mat-expansion-panel hideToggle>
+        <mat-expansion-panel hideToggle *ngFor="let flight of $filteredFlightResults | async">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    This is the expansion title
+                    {{flight.fromAirport}} ---------------------------------------------------------------------------------- {{flight.toAirport}}
                 </mat-panel-title>
-                <mat-panel-description>
-                    This is a summary of the content
-                </mat-panel-description>
             </mat-expansion-panel-header>
             <p>This is the primary content of the panel.</p>
         </mat-expansion-panel>
