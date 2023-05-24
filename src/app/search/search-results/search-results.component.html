@@ -16,7 +16,9 @@
     <mat-accordion class="search-results-container">
         <mat-expansion-panel
                 hideToggle
-                *ngFor="let flight of $filteredFlightResults | async"
+                *ngFor="let flight of $filteredFlightResults | async; let i = index"
+                (afterExpand)="selectFlight(flight)"
+                (afterCollapse)="deselectFlight()"
         >
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -39,6 +41,7 @@
         </mat-expansion-panel>
     </mat-accordion>
     <button
+            (click)="chooseSeats()"
             class="normal-button"
             color="primary"
             mat-fab

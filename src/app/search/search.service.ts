@@ -9,6 +9,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class SearchService {
 
     filter!: string;
+    selectedFlight!: Flight | null;
+
 
     constructor(private httpClient: HttpClient) {
     }

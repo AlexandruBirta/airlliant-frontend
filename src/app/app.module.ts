@@ -35,6 +35,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-moment-adapter";
 import {SearchResultsComponent} from './search/search-results/search-results.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {SearchSeatsComponent} from './search/search-seats/search-seats.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
         AboutComponent,
         TicketsComponent,
         SearchComponent,
-        SearchResultsComponent
+        SearchResultsComponent,
+        SearchSeatsComponent
     ],
     imports: [
         BrowserModule,
