@@ -14,13 +14,28 @@
     <h1>Select Flight</h1>
 
     <mat-accordion class="search-results-container">
-        <mat-expansion-panel hideToggle *ngFor="let flight of $filteredFlightResults | async">
+        <mat-expansion-panel
+                hideToggle
+                *ngFor="let flight of $filteredFlightResults | async"
+        >
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    {{flight.fromAirport}} ---------------------------------------------------------------------------------- {{flight.toAirport}}
+                    {{flight.fromAirport}}, {{flight.departureDate.replace(
+                    'T',
+                    ' '
+                )}} --------------------------- {{flight.toAirport}}, {{flight.arrivalDate.replace(
+                    'T',
+                    ' '
+                )}}
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>This is the primary content of the panel.</p>
+            <p>Flight Company: {{flight.flightCompany}}</p>
+            <p>Flight Number: {{flight.flightNumber}}</p>
+            <p>Duration: {{getFlightDurationInHours(
+                flight.departureDate,
+                flight.arrivalDate
+            )}} hours</p>
+            <p style="color: green">Price: ${{flight.price}}</p>
         </mat-expansion-panel>
     </mat-accordion>
     <button

@@ -4,6 +4,7 @@ export interface Flight {
     "toAirport": string;
     "toCountry": string;
     "flightCompany": string;
+    "flightNumber": string;
     "departureDate": string;
     "arrivalDate": string;
     "roundTrip": boolean;
