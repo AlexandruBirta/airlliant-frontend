@@ -8,6 +8,7 @@ import {TicketsComponent} from "./tickets/tickets.component";
 import {AuthGuard} from "./security/keycloak.guard";
 import {SearchComponent} from "./search/search.component";
 import {SearchResultsComponent} from "./search/search-results/search-results.component";
+import {SearchSeatsComponent} from "./search/search-seats/search-seats.component";
 
 const routes: Routes = [
     {
@@ -38,6 +39,10 @@ const routes: Routes = [
     {
         path: 'search/searchResults',
         component: SearchResultsComponent
+    },
+    {
+        path: 'search/searchResults/:flightNumber',
+        component: SearchSeatsComponent
     },
     {
         path: '',

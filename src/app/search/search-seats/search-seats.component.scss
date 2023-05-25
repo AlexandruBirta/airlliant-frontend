@@ -1,0 +1,81 @@
+@import "../../../scss/variables";
+
+.select-seats-card {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 50px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  z-index: 1;
+
+  background-color: white;
+
+  border: 10px dimgrey;
+  width: 1900px;
+  height: 660px;
+}
+
+.select-seats-container {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 20px;
+
+  background-color: white;
+
+  border: 10px dimgrey;
+  width: 1750px;
+  height: 400px;
+
+  background-image: url(../../../assets/plane-map-placeholder.png);
+
+}
+
+
+h1 {
+  font-size: 59px !important;
+  font-family: 'DM Serif Display', sans-serif !important;
+  color: $primaryColor !important;
+  margin-top: 430px !important;
+  margin-bottom: 150px !important;
+}
+
+button {
+  margin-left: 0 !important;
+  margin-top: 360px !important;
+  margin-bottom: 380px !important;
+}
+
+button:hover {
+  margin-left: 0 !important;
+  margin-top: 360px !important;
+  margin-bottom: 380px !important;
+}
+
+@mixin buttonMixin {
+  font-size: 25px !important;
+  margin-bottom: -470px !important;
+  margin-right: 1820px;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.back-button {
+  @include buttonMixin;
+}
+
+.back-button:hover {
+  @include buttonMixin;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: white !important;
+}

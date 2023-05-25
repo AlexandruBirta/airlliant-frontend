@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Flight} from "../../model/flight.interface";
 import {SearchService} from "../search.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'airlliant-search-search-results',
@@ -15,7 +16,8 @@ export class SearchResultsComponent implements OnInit {
     $filteredFlightResults!: Observable<Flight[]>;
 
     constructor(private searchService: SearchService,
-                private _snackBar: MatSnackBar) {
+                private _snackBar: MatSnackBar,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -46,7 +48,7 @@ export class SearchResultsComponent implements OnInit {
                 duration: 3000
             });
         } else {
-
+            this.router.navigate([`/search/searchResults/${this.searchService.selectedFlight.flightNumber}`]).then(r => r);
         }
     }
 
