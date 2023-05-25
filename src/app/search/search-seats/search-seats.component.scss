@@ -64,6 +64,8 @@
   padding: 20px;
 
   background-color: white;
+  border: none;
+  box-shadow: none;
 
   width: 1750px;
   height: 400px;
@@ -72,13 +74,28 @@
 
 }
 
-.seat-button {
+mat-button-toggle {
   background-color: forestgreen !important;
   width: 42px !important;
   height: 42px !important;
-  min-width: unset!important;
+  min-width: unset !important;
   margin-right: 4px !important;
   color: white !important;
+  margin-left: 0 !important;
+  margin-top: 360px !important;
+  margin-bottom: 380px !important;
+}
+
+.mat-button-toggle-disabled {
+  background-color: darkred !important;
+  color: white !important;
+  pointer-events: none;
+}
+
+.mat-button-toggle-checked {
+  background-color: yellow !important;
+  color: black !important;
+
 }
 
 h1 {
