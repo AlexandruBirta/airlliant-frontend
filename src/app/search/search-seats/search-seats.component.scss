@@ -68,12 +68,12 @@
   width: 1750px;
   height: 400px;
 
-  background-image: url(../../../assets/plane-map-placeholder.png);
+  background-image: url(../../../assets/plane-map-without-seats.png);
 
 }
 
 .seat-button {
-  background-color: blue !important;
+  background-color: forestgreen !important;
   width: 42px !important;
   height: 42px !important;
   min-width: unset!important;
@@ -112,7 +112,7 @@ button:hover {
   color: white !important;
 }
 
-.seats-container-a {
+#seats-container-a {
   @include seatContainerLayoutMixin;
   transform: translate(-50%, -53%);
 }
@@ -121,7 +121,7 @@ button:hover {
   @include entranceSeatMixin;
 }
 
-.seats-container-b {
+#seats-container-b {
   @include seatContainerLayoutMixin;
   transform: translate(-50%, 20%);
 }
@@ -129,4 +129,42 @@ button:hover {
 #seat-row-b-seat7 {
   @include entranceSeatMixin;
 }
+
+#seats-container-c {
+  @include seatContainerLayoutMixin;
+  transform: translate(-50%, 93%);
+}
+
+#seat-row-c-seat7 {
+  @include entranceSeatMixin;
+}
+
+#seats-container-d {
+  @include seatContainerLayoutMixin;
+  transform: translate(-50%, 233%);
+}
+
+#seat-row-d-seat7 {
+  @include entranceSeatMixin;
+}
+
+#seats-container-e {
+  @include seatContainerLayoutMixin;
+  transform: translate(-50%, 305%);
+}
+
+#seat-row-e-seat7 {
+  @include entranceSeatMixin;
+}
+
+#seats-container-f {
+  @include seatContainerLayoutMixin;
+  transform: translate(-50%, 378%);
+}
+
+#seat-row-f-seat7 {
+  @include entranceSeatMixin;
+}
+
+
 

@@ -24,11 +24,11 @@
   background-color: white;
   width: 1750px;
   height: 400px;
-  background-image: url(../../../assets/plane-map-placeholder.png);
+  background-image: url(../../../assets/plane-map-without-seats.png);
 }
 
 .seat-button {
-  background-color: blue !important;
+  background-color: forestgreen !important;
   width: 42px !important;
   height: 42px !important;
   min-width: unset !important;
@@ -79,7 +79,7 @@ button:hover {
   color: white !important;
 }
 
-.seats-container-a {
+#seats-container-a {
   position: absolute;
   box-sizing: border-box;
   padding-left: 10px;
@@ -101,7 +101,7 @@ button:hover {
   margin-right: 18px !important;
 }
 
-.seats-container-b {
+#seats-container-b {
   position: absolute;
   box-sizing: border-box;
   padding-left: 10px;
@@ -119,6 +119,94 @@ button:hover {
 }
 
 #seat-row-b-seat7 {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
+}
+
+#seats-container-c {
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  width: 1200px;
+  height: 60px;
+  margin-top: 50px;
+  transform: translate(-50%, 93%);
+}
+
+#seat-row-c-seat7 {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
+}
+
+#seats-container-d {
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  width: 1200px;
+  height: 60px;
+  margin-top: 50px;
+  transform: translate(-50%, 233%);
+}
+
+#seat-row-d-seat7 {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
+}
+
+#seats-container-e {
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  width: 1200px;
+  height: 60px;
+  margin-top: 50px;
+  transform: translate(-50%, 305%);
+}
+
+#seat-row-e-seat7 {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
+}
+
+#seats-container-f {
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  width: 1200px;
+  height: 60px;
+  margin-top: 50px;
+  transform: translate(-50%, 378%);
+}
+
+#seat-row-f-seat7 {
   margin-left: 17px !important;
   margin-right: 18px !important;
 }
