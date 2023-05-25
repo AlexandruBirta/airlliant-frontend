@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from "../search.service";
 import {Flight} from "../../model/flight.interface";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'airlliant-search-seats',
@@ -174,7 +176,9 @@ export class SearchSeatsComponent implements OnInit {
         }
     };
 
-    constructor(private searchService: SearchService) {
+    constructor(private searchService: SearchService,
+                private _snackBar: MatSnackBar,
+                private router: Router) {
 
         if (this.searchService.selectedFlight !== null) {
             this.selectedFlight = this.searchService.selectedFlight;
@@ -183,11 +187,24 @@ export class SearchSeatsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(JSON.stringify(this.searchService.selectedFlight));
+        this.searchService.selectedSeatRow = null;
+        this.searchService.selectedSeat = null;
     }
 
-    showSeat(selectedSeatRow: string, selectedSeat: string) {
-        console.log(selectedSeatRow + ' ' + selectedSeat);
+    selectSeat(selectedSeatRow: string, selectedSeat: string) {
+        this.searchService.selectedSeatRow = selectedSeatRow;
+        this.searchService.selectedSeat = selectedSeat;
+    }
+
+    finalizeSearch() {
+        if (this.searchService.selectedSeatRow !== null && this.searchService.selectedSeat !== null) {
+            this.router.navigate([this.router.url, 'purchase']).then(r => r);
+        } else {
+            this._snackBar.open(`Pick a seat!`, '', {
+                duration: 3000
+            });
+        }
+
     }
 
 }

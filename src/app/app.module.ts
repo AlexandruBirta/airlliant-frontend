@@ -36,6 +36,7 @@ import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-mo
 import {SearchResultsComponent} from './search/search-results/search-results.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {SearchSeatsComponent} from './search/search-seats/search-seats.component';
+import {PurchaseComponent} from './search/purchase/purchase.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import {SearchSeatsComponent} from './search/search-seats/search-seats.component
         TicketsComponent,
         SearchComponent,
         SearchResultsComponent,
-        SearchSeatsComponent
+        SearchSeatsComponent,
+        PurchaseComponent
     ],
     imports: [
         BrowserModule,

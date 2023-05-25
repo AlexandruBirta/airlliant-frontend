@@ -9,6 +9,7 @@ import {AuthGuard} from "./security/keycloak.guard";
 import {SearchComponent} from "./search/search.component";
 import {SearchResultsComponent} from "./search/search-results/search-results.component";
 import {SearchSeatsComponent} from "./search/search-seats/search-seats.component";
+import {PurchaseComponent} from "./search/purchase/purchase.component";
 
 const routes: Routes = [
     {
@@ -43,6 +44,10 @@ const routes: Routes = [
     {
         path: 'search/searchResults/:flightNumber',
         component: SearchSeatsComponent
+    },
+    {
+        path: 'search/searchResults/:flightNumber/purchase',
+        component: PurchaseComponent
     },
     {
         path: '',

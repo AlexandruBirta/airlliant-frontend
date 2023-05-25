@@ -1,0 +1,62 @@
+@import "../../../scss/variables";
+
+@mixin buttonMixin {
+  font-size: 25px !important;
+  margin-bottom: 10px !important;
+  margin-right: 400px !important;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.purchase-container {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 10px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  z-index: 1;
+
+  background-color: white;
+
+  width: 481.22px;
+  height: 503.57px;
+}
+
+h1 {
+  font-size: 59px;
+  font-family: 'DM Serif Display', sans-serif;
+  color: $primaryColor;
+  margin-left: 20px;
+}
+
+.back-button {
+  @include buttonMixin;
+}
+
+.back-button:hover {
+  @include buttonMixin;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: white !important;
+}
+
+
+button {
+  margin-left: 0 !important;
+  margin-top: 10px !important;
+}
+
+button:hover {
+  margin-left: 0 !important;
+  margin-top: 10px !important;
+}

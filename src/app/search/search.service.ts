@@ -10,7 +10,8 @@ export class SearchService {
 
     filter!: string;
     selectedFlight!: Flight | null;
-
+    selectedSeatRow!: string | null;
+    selectedSeat!: string | null;
 
     constructor(private httpClient: HttpClient) {
     }
