@@ -1,5 +1,40 @@
 @import "../../../scss/variables";
 
+@mixin buttonMixin {
+  font-size: 25px !important;
+  margin-bottom: -470px !important;
+  margin-right: 1820px;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+@mixin seatContainerLayoutMixin {
+  position: absolute;
+  box-sizing: border-box;
+
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+
+  width: 1200px;
+  height: 60px;
+
+  margin-top: 50px;
+}
+
+@mixin entranceSeatMixin {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
+}
+
 .select-seats-card {
   position: absolute;
   box-sizing: border-box;
@@ -30,7 +65,6 @@
 
   background-color: white;
 
-  border: 10px dimgrey;
   width: 1750px;
   height: 400px;
 
@@ -38,6 +72,14 @@
 
 }
 
+.seat-button {
+  background-color: blue !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: unset!important;
+  margin-right: 4px !important;
+  color: white !important;
+}
 
 h1 {
   font-size: 59px !important;
@@ -59,16 +101,6 @@ button:hover {
   margin-bottom: 380px !important;
 }
 
-@mixin buttonMixin {
-  font-size: 25px !important;
-  margin-bottom: -470px !important;
-  margin-right: 1820px;
-  box-shadow: none !important;
-  border: 1px solid black !important;
-  background-color: white !important;
-  color: black !important;
-}
-
 .back-button {
   @include buttonMixin;
 }
@@ -79,3 +111,22 @@ button:hover {
   background-color: black !important;
   color: white !important;
 }
+
+.seats-container-a {
+  @include seatContainerLayoutMixin;
+  transform: translate(-50%, -53%);
+}
+
+#seat-row-a-seat7 {
+  @include entranceSeatMixin;
+}
+
+.seats-container-b {
+  @include seatContainerLayoutMixin;
+  transform: translate(-50%, 20%);
+}
+
+#seat-row-b-seat7 {
+  @include entranceSeatMixin;
+}
+

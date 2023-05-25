@@ -22,10 +22,18 @@
   box-sizing: border-box;
   padding: 20px;
   background-color: white;
-  border: 10px dimgrey;
   width: 1750px;
   height: 400px;
   background-image: url(../../../assets/plane-map-placeholder.png);
+}
+
+.seat-button {
+  background-color: blue !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: unset !important;
+  margin-right: 4px !important;
+  color: white !important;
 }
 
 h1 {
@@ -69,6 +77,50 @@ button:hover {
   border: 1px solid white !important;
   background-color: black !important;
   color: white !important;
+}
+
+.seats-container-a {
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  width: 1200px;
+  height: 60px;
+  margin-top: 50px;
+  transform: translate(-50%, -53%);
+}
+
+#seat-row-a-seat7 {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
+}
+
+.seats-container-b {
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 10px;
+  left: 60%;
+  top: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+  width: 1200px;
+  height: 60px;
+  margin-top: 50px;
+  transform: translate(-50%, 20%);
+}
+
+#seat-row-b-seat7 {
+  margin-left: 17px !important;
+  margin-right: 18px !important;
 }
 
 /*# sourceMappingURL=search-seats.component.css.map */
