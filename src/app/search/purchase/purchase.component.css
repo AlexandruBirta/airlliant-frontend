@@ -1,59 +1,76 @@
 .purchase-container {
-    position: absolute;
-    box-sizing: border-box;
-    padding: 10px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: flex-start;
-    z-index: 1;
-    background-color: white;
-    width: 481.22px;
-    height: 503.57px;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  z-index: 1;
+  background-color: white;
+  width: 500.22px;
+  height: 800.57px;
+}
+
+h2 {
+  font-size: 40px;
+  font-family: "DM Serif Display", sans-serif;
+  color: #BF2051;
+  margin-top: 3px;
+  margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 59px;
-    font-family: "DM Serif Display", sans-serif;
-    color: #BF2051;
-    margin-left: 20px;
+  font-size: 18px;
+  font-family: "DM Serif Display", sans-serif;
+  color: gray;
+  margin-left: 20px;
+}
+
+p {
+  font-size: 18px;
+  font-family: "DM Serif Display", sans-serif;
+  color: black;
+  margin-left: 20px;
 }
 
 .back-button {
-    font-size: 25px !important;
-    margin-bottom: 10px !important;
-    margin-right: 400px !important;
-    box-shadow: none !important;
-    border: 1px solid black !important;
-    background-color: white !important;
-    color: black !important;
+  font-size: 25px !important;
+  margin-right: 400px !important;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
 }
 
 .back-button:hover {
-    font-size: 25px !important;
-    margin-bottom: 10px !important;
-    margin-right: 400px !important;
-    box-shadow: none !important;
-    border: 1px solid black !important;
-    background-color: white !important;
-    color: black !important;
-    border: 1px solid white !important;
-    background-color: black !important;
-    color: white !important;
+  font-size: 25px !important;
+  margin-right: 400px !important;
+  box-shadow: none !important;
+  border: 1px solid black !important;
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid white !important;
+  background-color: black !important;
+  color: white !important;
 }
 
 button {
-    margin-left: 0 !important;
-    margin-top: 10px !important;
+  margin-top: 18px !important;
 }
 
 button:hover {
-    margin-left: 0 !important;
-    margin-top: 10px !important;
+  margin-top: 18px !important;
+}
+
+.qr-code {
+  filter: drop-shadow(5px 5px 5px #222222) !important;
+  align-self: center !important;
+  margin: 20px;
 }
 
 /*# sourceMappingURL=purchase.component.css.map */

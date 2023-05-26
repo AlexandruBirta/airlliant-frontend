@@ -1,4 +1,5 @@
 export interface Flight {
+    "id": number;
     "fromAirport": string;
     "fromCountry": string;
     "toAirport": string;
@@ -160,5 +161,7 @@ export interface Flight {
             "seat22": boolean;
             "seat23": boolean
         }
-    }
+    },
+    insertedDate: string;
+    updatedDate: string;
 }

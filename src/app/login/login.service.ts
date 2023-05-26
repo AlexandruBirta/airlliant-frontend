@@ -35,7 +35,7 @@ export class LoginService {
                         refreshToken: tokens.refresh_token,
                         checkLoginIframe: false
                     },
-                    enableBearerInterceptor: true,
+                    enableBearerInterceptor: false,
                 }).then(r => r);
 
             }

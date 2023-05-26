@@ -8,27 +8,34 @@
     >
         <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
-    <h1>Select Seat</h1>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <button
-            class="normal-button"
-            color="primary"
-            mat-fab
-            extended
-    >Purchase
-    </button>
+    <h2>Purchase Ticket</h2>
+    <div style="margin-top: 15px; margin-right: 200px">
+        <h1>Departure:</h1>
+        <p>{{selectedFlight.departureDate.replace('T', ' ')}}</p>
+        <h1>Arrival:</h1>
+        <p>{{selectedFlight.arrivalDate.replace('T', ' ')}}</p>
+        <h1>Flight Number:</h1>
+        <p>{{selectedFlight.flightNumber}}</p>
+        <h1>Seat:</h1>
+<!--        <p>{{selectedRowAndSeat}}</p>-->
+        <h1>Price:</h1>
+        <p>${{selectedFlight.price}}</p>
+    </div>
+
+        <ngx-qrcode
+                class="qr-code"
+                [elementType]="qrCodeElementType"
+                [errorCorrectionLevel]="qrCodeCorrectionLevel"
+                [value]="qrCodeValue"
+        ></ngx-qrcode>
+
+        <button
+                (click)="purchaseTicket()"
+                class="normal-button"
+                color="primary"
+                mat-fab
+                extended
+        >Purchase
+        </button>
+
 </mat-card>

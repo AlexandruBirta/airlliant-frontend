@@ -37,6 +37,7 @@ import {SearchResultsComponent} from './search/search-results/search-results.com
 import {MatExpansionModule} from "@angular/material/expansion";
 import {SearchSeatsComponent} from './search/search-seats/search-seats.component';
 import {PurchaseComponent} from './search/purchase/purchase.component';
+import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
 
 @NgModule({
     declarations: [
@@ -77,7 +78,8 @@ import {PurchaseComponent} from './search/purchase/purchase.component';
         MatNativeDateModule,
         MatChipsModule,
         MatSlideToggleModule,
-        MatExpansionModule
+        MatExpansionModule,
+        NgxQRCodeModule
     ],
     providers: [
         {

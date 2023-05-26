@@ -12,7 +12,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
                 initOptions: {
                     checkLoginIframe: false
                 },
-                enableBearerInterceptor: true
+                enableBearerInterceptor: false
             }
         );
 }
