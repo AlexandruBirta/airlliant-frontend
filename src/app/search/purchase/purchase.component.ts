@@ -3,6 +3,9 @@ import {SearchService} from "../search.service";
 import {KeycloakService} from "keycloak-angular";
 import {Flight} from "../../model/flight.interface";
 import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {APP_CONFIG} from "../../app-config/app-config.service";
+import {Seats} from "../../model/seats.interface";
 
 @Component({
     selector: 'airlliant-purchase',
@@ -179,12 +182,18 @@ export class PurchaseComponent implements OnInit {
         "updatedDate": "2023-05-25T15:47:51.765"
     };
 
+    selectedSeats: Seats = {
+        "seatRow": '',
+        "seatNumber": ''
+    };
+
     selectedRowAndSeat: string = '';
     qrCodeElementType = NgxQrcodeElementTypes.URL;
     qrCodeCorrectionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
     qrCodeValue = '';
+    keycloakUserEmail: string | undefined = '';
 
-    constructor(private searchService: SearchService, private keycloakService: KeycloakService) {
+    constructor(private searchService: SearchService, private keycloakService: KeycloakService, private httpClient: HttpClient) {
     }
 
     ngOnInit(): void {
@@ -192,17 +201,32 @@ export class PurchaseComponent implements OnInit {
         if (this.searchService.selectedFlight !== null && this.searchService.selectedSeat !== null && this.searchService.selectedSeatRow !== null) {
             this.selectedFlight = this.searchService.selectedFlight;
             this.selectedRowAndSeat = this.searchService.selectedSeatRow.at(this.searchService.selectedSeatRow.length - 1) + this.searchService.selectedSeat.substring(4, this.searchService.selectedSeat.length);
+            this.selectedSeats = {
+                "seatRow": this.searchService.selectedSeatRow,
+                "seatNumber": this.searchService.selectedSeat
+            };
             this.qrCodeValue = `${this.selectedFlight.flightNumber}-${this.selectedRowAndSeat}`;
         }
 
-        console.log(JSON.stringify(this.selectedFlight));
+        this.keycloakService.loadUserProfile().then(keycloakUser => {
+            this.keycloakUserEmail = keycloakUser.email;
+        });
 
     }
 
     purchaseTicket() {
-        this.keycloakService.loadUserProfile().then(r => {
-            console.log(r.email);
-        });
+
+        const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
+
+        return this.httpClient.post(`${APP_CONFIG.apiBaseUrl}${APP_CONFIG.usersPath}/${this.keycloakUserEmail}${APP_CONFIG.flightsPath}/${this.selectedFlight.id}${APP_CONFIG.ticketsPath}`,
+            this.selectedSeats,
+            {
+                headers: new HttpHeaders({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Basic ${apiBase64AuthCredentials}`
+                })
+            }).subscribe(data => data);
 
     }
 

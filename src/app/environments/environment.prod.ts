@@ -5,6 +5,7 @@ export const environment = {
     apiAuthPassword: 'rest123',
     usersPath: '/users',
     flightsPath: '/flights',
+    ticketsPath: '/tickets',
     keycloakBaseUrl: 'http://localhost:9090',
     keycloakTokenUrl: 'http://localhost:9090/realms/master/protocol/openid-connect/token',
     keycloakLoginUrl: 'http://localhost:9090/realms/Airlliant/protocol/openid-connect/token',

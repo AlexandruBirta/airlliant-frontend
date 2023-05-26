@@ -10,6 +10,7 @@ export const APP_CONFIG: AppConfig = {
     apiAuthPassword: environment.apiAuthPassword,
     usersPath: environment.usersPath,
     flightsPath: environment.flightsPath,
+    ticketsPath: environment.ticketsPath,
     keycloakBaseUrl: environment.keycloakBaseUrl,
     keycloakTokenUrl: environment.keycloakTokenUrl,
     keycloakLoginUrl: environment.keycloakLoginUrl,

@@ -3,5 +3,4 @@ export interface User {
     lastName: string;
     email: string;
     isNotifiable: boolean;
-    balance: number;
 }

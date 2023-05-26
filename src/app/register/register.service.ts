@@ -23,8 +23,7 @@ export class RegisterService {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            isNotifiable: true,
-            balance: 0.0
+            isNotifiable: true
         }
 
         const apiBase64AuthCredentials: string = btoa(`${APP_CONFIG.apiAuthUsername}:${APP_CONFIG.apiAuthPassword}`);
