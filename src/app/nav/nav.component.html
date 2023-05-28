@@ -49,6 +49,7 @@
             About
         </button>
         <button
+                [hidden]="navService.userLoggedIn"
                 class="primary-login"
                 color="primary"
                 mat-fab
@@ -56,6 +57,16 @@
                 routerLink="login"
         >
             Login
+        </button>
+        <button
+                [hidden]="!navService.userLoggedIn"
+                class="primary-login"
+                color="primary"
+                mat-fab
+                extended
+                (click)="logout()"
+        >
+            Logout
         </button>
     </div>
 

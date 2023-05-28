@@ -21,7 +21,7 @@ export class AuthGuard extends KeycloakAuthGuard {
     ) {
         // Force the user to log in if currently unauthenticated.
         if (!this.authenticated) {
-            this.router.navigateByUrl('./');
+            this.router.navigateByUrl('/login');
             this._snackBar.open(`You need to be logged in!`, '', {
                 duration: 3000
             });

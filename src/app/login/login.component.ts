@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
+import {NavService} from "../nav/nav.service";
 
 @Component({
     selector: 'airlliant-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private loginService: LoginService,
-                private router: Router) {
+                private router: Router,
+                private navService: NavService) {
     }
 
     ngOnInit(): void {
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
             email: [''],
             password: ['']
         })
+        this.navService.checkLoginState();
     }
 
     login() {
@@ -32,6 +35,8 @@ export class LoginComponent implements OnInit {
         )
 
         this.loginForm.reset();
+
+        this.navService.checkLoginState();
 
         this.router.navigate(['../home']);
 

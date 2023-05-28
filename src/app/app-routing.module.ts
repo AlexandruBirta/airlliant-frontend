@@ -19,7 +19,7 @@ const routes: Routes = [
     {
         path: 'tickets',
         component: TicketsComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'about',

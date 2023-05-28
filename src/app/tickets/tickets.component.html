@@ -9,6 +9,16 @@
                 opened
         >
             <h1 style="margin-left: 20px">Settings</h1>
+            <mat-slide-toggle
+                    [(ngModel)]="isNotifiable"
+                    [ngModelOptions]="{standalone: true}"
+                    [checked]="enableUserNotifications"
+                    (change)="changeUserNotifications()"
+                    name="checkPrice"
+                    color="primary"
+                    style="margin: 20px"
+            >Enable notifications
+            </mat-slide-toggle>
         </mat-drawer>
         <mat-drawer-content>
 
