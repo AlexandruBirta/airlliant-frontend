@@ -21,7 +21,6 @@ export class NavService {
             this.userLoggedIn = false
         });
 
-        console.log(this.userLoggedIn);
     }
 
 }
