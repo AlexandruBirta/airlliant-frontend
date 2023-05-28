@@ -29,7 +29,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {SearchComponent} from "./search/search.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MAT_DATE_FORMATS, MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from "@angular/material-moment-adapter";
@@ -38,6 +38,19 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {SearchSeatsComponent} from './search/search-seats/search-seats.component';
 import {PurchaseComponent} from './search/purchase/purchase.component';
 import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
+
+export const MY_DATE_FORMATS = {
+    parse: {
+        dateInput: 'DD/MM/YYYY',
+    },
+    display: {
+        dateInput: 'DD/MM/YYYY',
+        monthYearLabel: 'MMMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY'
+    },
+};
+
 
 @NgModule({
     declarations: [
@@ -95,8 +108,11 @@ import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
         {
             provide: MAT_DATE_FORMATS,
             useValue: MAT_MOMENT_DATE_FORMATS
+        },
+        {
+            provide: MAT_DATE_LOCALE,
+            useValue: 'ro'
         }
-
     ],
     bootstrap: [AppComponent]
 })

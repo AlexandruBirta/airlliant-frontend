@@ -47,16 +47,16 @@ export class SearchComponent implements OnInit {
             });
 
         this.searchForm = this.formBuilder.group({
-            fromAirport: ['LHR', {
+            fromAirport: ['', {
                 validators: [Validators.required]
             }],
-            toAirport: ['MDR', {
+            toAirport: ['', {
                 validators: [Validators.required]
             }],
-            departure: [moment('Mon Jul 03 2023 00:00:00 GMT+0300 (Eastern European Summer Time)').toISOString(), {
+            departure: [moment('').toISOString(), {
                 validators: [Validators.required]
             }],
-            arrival: [moment('Tue Jul 04 2023 00:00:00 GMT+0300 (Eastern European Summer Time)').toISOString(), {
+            arrival: [moment('').toISOString(), {
                 validators: [Validators.required]
             }],
             minPrice: new FormControl({value: '', disabled: !this.isPriceCheckEnabled}),
