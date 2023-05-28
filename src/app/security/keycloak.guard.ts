@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {KeycloakAuthGuard, KeycloakService} from 'keycloak-angular';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
     providedIn: 'root'
@@ -8,7 +9,8 @@ import {KeycloakAuthGuard, KeycloakService} from 'keycloak-angular';
 export class AuthGuard extends KeycloakAuthGuard {
     constructor(
         protected override readonly router: Router,
-        protected readonly keycloak: KeycloakService
+        protected readonly keycloak: KeycloakService,
+        private _snackBar: MatSnackBar
     ) {
         super(router, keycloak);
     }
@@ -19,7 +21,10 @@ export class AuthGuard extends KeycloakAuthGuard {
     ) {
         // Force the user to log in if currently unauthenticated.
         if (!this.authenticated) {
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('./');
+            this._snackBar.open(`You need to be logged in!`, '', {
+                duration: 3000
+            });
         }
 
         // Get the roles required from the route.

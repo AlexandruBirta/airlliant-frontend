@@ -1,1 +1,38 @@
+.search-results-card {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -48%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    z-index: 1;
+    background-color: white;
+    border: 10px dimgrey;
+    width: 1375.77px;
+    height: 760.5px;
+}
+
+h1 {
+    font-size: 25px !important;
+    font-family: "DM Serif Display", sans-serif !important;
+    color: #BF2051 !important;
+    margin-top: 10px;
+}
+
+.trips-container {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid #555 !important;
+}
+
+.trip-select-drawer {
+    width: 25% !important;
+}
+
 /*# sourceMappingURL=tickets.component.css.map */

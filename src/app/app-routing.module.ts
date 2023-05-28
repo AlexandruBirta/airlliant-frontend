@@ -19,7 +19,7 @@ const routes: Routes = [
     {
         path: 'tickets',
         component: TicketsComponent,
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
     },
     {
         path: 'about',
@@ -43,11 +43,13 @@ const routes: Routes = [
     },
     {
         path: 'search/searchResults/:flightNumber',
-        component: SearchSeatsComponent
+        component: SearchSeatsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'search/searchResults/:flightNumber/purchase',
-        component: PurchaseComponent
+        component: PurchaseComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',

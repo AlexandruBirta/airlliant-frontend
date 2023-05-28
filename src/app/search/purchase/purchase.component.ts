@@ -6,6 +6,7 @@ import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediar
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {APP_CONFIG} from "../../app-config/app-config.service";
 import {Seats} from "../../model/seats.interface";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'airlliant-purchase',
@@ -193,7 +194,7 @@ export class PurchaseComponent implements OnInit {
     qrCodeValue = '';
     keycloakUserEmail: string | undefined = '';
 
-    constructor(private searchService: SearchService, private keycloakService: KeycloakService, private httpClient: HttpClient) {
+    constructor(private searchService: SearchService, private keycloakService: KeycloakService, private httpClient: HttpClient, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -226,7 +227,10 @@ export class PurchaseComponent implements OnInit {
                     'Content-Type': 'application/json',
                     Authorization: `Basic ${apiBase64AuthCredentials}`
                 })
-            }).subscribe(data => data);
+            }).subscribe(data => {
+            this.router.navigate([`/search`]).then(r => r);
+            return data;
+        });
 
     }
 

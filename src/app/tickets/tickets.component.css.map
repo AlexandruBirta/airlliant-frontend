@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"tickets.component.css"}
+{"version":3,"sourceRoot":"","sources":["tickets.component.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EAEA;EACA;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;EAEA;EAEA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;;;AAGF;EACE","file":"tickets.component.css"}

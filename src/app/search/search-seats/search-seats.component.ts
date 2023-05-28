@@ -185,6 +185,8 @@ export class SearchSeatsComponent implements OnInit {
 
         if (this.searchService.selectedFlight !== null) {
             this.selectedFlight = this.searchService.selectedFlight;
+        } else {
+            this.router.navigate([`/search`]).then(r => r);
         }
 
     }

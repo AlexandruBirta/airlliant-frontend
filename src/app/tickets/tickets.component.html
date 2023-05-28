@@ -1,1 +1,185 @@
 <div id="tickets-background"></div>
+
+<mat-card class="search-results-card">
+
+    <mat-drawer-container class="trips-container">
+        <mat-drawer
+                class="trip-select-drawer"
+                mode="side"
+                opened
+        >
+            <h1 style="margin-left: 20px">Settings</h1>
+        </mat-drawer>
+        <mat-drawer-content>
+
+            <table
+                    [dataSource]="tickets"
+                    class="mat-elevation-z8"
+                    mat-table
+            >
+                <ng-container matColumnDef="ticket-title">
+                    <th
+                            mat-header-cell
+                            *matHeaderCellDef
+                    >
+                        <h1>My Tickets</h1>
+                    </th>
+                </ng-container>
+
+                <tr
+                        mat-header-row
+                        *matHeaderRowDef="['ticket-title']"
+                >
+                </tr>
+            </table>
+
+            <table
+                    [dataSource]="tickets"
+                    class="mat-elevation-z8"
+                    mat-table
+            >
+
+                <th
+                        *matHeaderCellDef
+                        mat-header-cell
+                > ID
+                </th>
+
+                <ng-container matColumnDef="fromCountry">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > From Country
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.fromCountry}} </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="fromAirport">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > From Airport
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.fromAirport}}
+                    </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="toCountry">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > To Country
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.toCountry}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="toAirport">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > To Airport
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.toAirport}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="departure">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > Departure
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.departureDate.replace(
+                        'T',
+                        ' '
+                    )}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="arrival">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > Arrival
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.arrivalDate.replace(
+                        'T',
+                        ' '
+                    )}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="gate">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > Gate
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.gate}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="seat">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > Seat
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.seatRow.at(ticket.seatRow.length - 1) + ticket.seatNumber.substring(
+                        4,
+                        ticket.seatNumber.length
+                    )}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                    > Price
+                    </th>
+                    <td
+                            *matCellDef="let ticket"
+                            mat-cell
+                    > {{ticket.flight.price | currency}} </td>
+                </ng-container>
+
+                <tr
+                        *matHeaderRowDef="ticketTableColumns"
+                        mat-header-row
+                ></tr>
+                <tr
+                        *matRowDef="let row; columns: ticketTableColumns;"
+                        mat-row
+                ></tr>
+
+
+            </table>
+
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</mat-card>

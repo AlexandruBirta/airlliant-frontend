@@ -23,6 +23,11 @@ export class SearchResultsComponent implements OnInit {
     ngOnInit(): void {
         this.$filteredFlightResults = this.searchService.searchFlights();
         this.searchService.selectedFlight = null;
+
+        if (this.searchService.filter === undefined) {
+            this.router.navigate([`/search`]).then(r => r);
+        }
+
     }
 
     getFlightDurationInHours(departureDateString: string, arrivalDateString: string) {
