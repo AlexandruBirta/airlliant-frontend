@@ -39,19 +39,6 @@ import {SearchSeatsComponent} from './search/search-seats/search-seats.component
 import {PurchaseComponent} from './search/purchase/purchase.component';
 import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
 
-export const MY_DATE_FORMATS = {
-    parse: {
-        dateInput: 'DD/MM/YYYY',
-    },
-    display: {
-        dateInput: 'DD/MM/YYYY',
-        monthYearLabel: 'MMMM YYYY',
-        dateA11yLabel: 'LL',
-        monthYearA11yLabel: 'MMMM YYYY'
-    },
-};
-
-
 @NgModule({
     declarations: [
         AppComponent,
