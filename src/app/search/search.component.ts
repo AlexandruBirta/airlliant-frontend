@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {APP_CONFIG} from "../app-config/app-config.service";
-import {Observable} from "rxjs";
+import {concatMap, distinct, from, map, Observable, reduce} from "rxjs";
 import {Flight} from "../model/flight.interface";
 import * as moment from "moment";
 import {Router} from "@angular/router";
@@ -44,7 +44,27 @@ export class SearchComponent implements OnInit {
                     'Content-Type': 'application/json',
                     Authorization: `Basic ${apiBase64AuthCredentials}`
                 })
-            });
+            }).pipe(
+            concatMap(from), // shorthand for: `concatMap(response => from(response)),`
+            map(flight => (
+                {
+                    id: flight.id,
+                    fromAirport: flight.fromAirport,
+                    fromCountry: flight.fromCountry,
+                    toAirport: flight.toAirport,
+                    toCountry: flight.toCountry,
+                    flightCompany: flight.flightCompany,
+                    flightNumber: flight.flightNumber,
+                    departureDate: flight.departureDate,
+                    arrivalDate: flight.arrivalDate,
+                    roundTrip: flight.roundTrip,
+                    price: flight.price
+                }
+            )),
+            distinct(flight => flight.fromCountry),
+            reduce((flights: (any | Flight)[], flight: any | Flight) => {
+                return [...flights, flight];
+            }, []));
 
         this.searchForm = this.formBuilder.group({
             fromAirport: ['', {
